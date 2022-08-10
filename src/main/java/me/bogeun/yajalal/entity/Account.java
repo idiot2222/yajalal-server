@@ -28,6 +28,9 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     private boolean isBirthDatePublic;
 
     private boolean isGenderPublic;

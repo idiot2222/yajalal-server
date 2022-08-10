@@ -2,6 +2,7 @@ package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.Authority;
 import me.bogeun.yajalal.mapper.AccountMapper;
 import me.bogeun.yajalal.payload.AccountJoinDto;
 import me.bogeun.yajalal.repository.AccountRepository;
@@ -21,6 +22,7 @@ public class AccountService {
         joinDto.setPassword(passwordEncoder.encode(joinDto.getPassword()));
 
         Account account = accountMapper.joinDtoToEntity(joinDto);
+        account.setAuthority(Authority.COMMON);
 
         return accountRepository.save(account);
     }
