@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -23,7 +23,7 @@ public class Account {
     @Column(unique = true)
     private String email;
 
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
