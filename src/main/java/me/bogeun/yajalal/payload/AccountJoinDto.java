@@ -1,31 +1,23 @@
-package me.bogeun.yajalal.entity;
+package me.bogeun.yajalal.payload;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.bogeun.yajalal.entity.Gender;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
-@Entity
-public class Account {
+@Setter
+public class AccountJoinDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(unique = true)
     private String username;
 
     private String password;
 
-    @Column(unique = true)
     private String email;
 
     private LocalDateTime birthDate;
 
-    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     private boolean isBirthDatePublic;
