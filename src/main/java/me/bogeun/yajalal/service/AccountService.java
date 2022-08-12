@@ -76,7 +76,7 @@ public class AccountService implements UserDetailsService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return "ok";
+        return loginDto.getUsername();
     }
 
     public void logout() {
