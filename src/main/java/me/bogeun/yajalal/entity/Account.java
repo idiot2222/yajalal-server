@@ -29,7 +29,7 @@ public class Account {
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    private Authority authority;
+    private Role role;
 
     private boolean isBirthDatePublic;
 
