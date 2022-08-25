@@ -1,14 +1,15 @@
 package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
+import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.payload.AccountJoinDto;
 import me.bogeun.yajalal.payload.LoginDto;
-import me.bogeun.yajalal.security.JwtUtils;
+import me.bogeun.yajalal.security.service.CurrentUser;
+import me.bogeun.yajalal.security.service.UserAccount;
 import me.bogeun.yajalal.service.AccountService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,9 +17,6 @@ import java.security.Principal;
 public class AccountController {
 
     private final AccountService accountService;
-
-    private final JwtUtils jwtUtils;
-
 
     @PostMapping("/join")
     public String join(@RequestBody AccountJoinDto joinDto) {
@@ -29,25 +27,16 @@ public class AccountController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
-        String result = accountService.login(loginDto);
+        String token = accountService.login(loginDto);
 
-        return ResponseEntity.ok(result);
-    }
-
-    @PostMapping("/logout")
-    public ResponseEntity<Principal> logout(Principal principal) {
-        accountService.logout();
-
-        return ResponseEntity
-                .status(200)
-                .body(principal);
+        return ResponseEntity.ok()
+                .header("Authorization", token)
+                .body("ok");
     }
 
     @GetMapping("/current")
-    public ResponseEntity<Principal> current(Principal principal) {
-        return ResponseEntity
-                .status(200)
-                .body(principal);
+    public Account getCurrent(@CurrentUser Account account) {
+        return account;
     }
 
 }
