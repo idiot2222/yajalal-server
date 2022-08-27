@@ -2,12 +2,12 @@ package me.bogeun.yajalal.security.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.bogeun.yajalal.payload.LoginDto;
-import me.bogeun.yajalal.security.service.AccountDetailsService;
-import me.bogeun.yajalal.security.service.UserAccount;
 import me.bogeun.yajalal.security.handlers.FormLoginFailHandler;
 import me.bogeun.yajalal.security.handlers.FormLoginSuccessHandler;
+import me.bogeun.yajalal.security.service.AccountDetailsService;
+import me.bogeun.yajalal.security.service.UserAccount;
+import me.bogeun.yajalal.security.tokens.FormLoginToken;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
@@ -44,7 +44,7 @@ public class FormLoginFilter extends AbstractAuthenticationProcessingFilter {
         UserAccount userDetails = (UserAccount) accountDetailsService.loadUserByUsername(dto.getUsername());
         String password = dto.getPassword();
 
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails, password);
+        FormLoginToken token = FormLoginToken.unauthenticatedToken(userDetails, password);
 
         return getAuthenticationManager().authenticate(token);
     }

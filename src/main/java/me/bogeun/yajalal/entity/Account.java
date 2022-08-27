@@ -1,6 +1,8 @@
 package me.bogeun.yajalal.entity;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,6 +10,7 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
+@NoArgsConstructor
 @Entity
 public class Account {
 
@@ -35,4 +38,17 @@ public class Account {
 
     private boolean isGenderPublic;
 
+
+    @Builder
+    public Account(Long id, String username, String password, String email, LocalDate birthDate, Gender gender, Role role, boolean isBirthDatePublic, boolean isGenderPublic) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.role = role;
+        this.isBirthDatePublic = isBirthDatePublic;
+        this.isGenderPublic = isGenderPublic;
+    }
 }

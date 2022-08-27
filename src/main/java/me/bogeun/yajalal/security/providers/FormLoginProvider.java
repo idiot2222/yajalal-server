@@ -3,9 +3,9 @@ package me.bogeun.yajalal.security.providers;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.security.service.UserAccount;
+import me.bogeun.yajalal.security.tokens.FormLoginToken;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +20,7 @@ public class FormLoginProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
+        FormLoginToken token = (FormLoginToken) authentication;
 
         UserAccount userDetails = (UserAccount) token.getPrincipal();
         Account account = userDetails.getAccount();
@@ -29,7 +29,7 @@ public class FormLoginProvider implements AuthenticationProvider {
         if(isCorrectPassword(account, password)) {
             List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(account.getRole().toString()));
 
-            return new UsernamePasswordAuthenticationToken(userDetails, password, authorities);
+            return FormLoginToken.authenticatedToken(userDetails, password, authorities);
         }
 
         throw new BadCredentialsException("invalid login info.");
@@ -41,6 +41,6 @@ public class FormLoginProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
+        return FormLoginToken.class == authentication;
     }
 }

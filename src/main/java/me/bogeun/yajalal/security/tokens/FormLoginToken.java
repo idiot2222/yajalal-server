@@ -7,11 +7,11 @@ import java.util.Collection;
 
 public class FormLoginToken extends UsernamePasswordAuthenticationToken {
 
-    public FormLoginToken(Object principal, Object credentials) {
+    private FormLoginToken(Object principal, Object credentials) {
         super(principal, credentials);
     }
 
-    public FormLoginToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
+    private FormLoginToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
         super(principal, credentials, authorities);
     }
 

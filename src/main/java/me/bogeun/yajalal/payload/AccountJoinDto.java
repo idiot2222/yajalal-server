@@ -3,6 +3,7 @@ package me.bogeun.yajalal.payload;
 import lombok.Getter;
 import lombok.Setter;
 import me.bogeun.yajalal.entity.Gender;
+import me.bogeun.yajalal.entity.Role;
 
 import java.time.LocalDate;
 
@@ -19,6 +20,8 @@ public class AccountJoinDto {
     private LocalDate birthDate;
 
     private Gender gender;
+
+    private Role role;
 
     private boolean isBirthDatePublic;
 
