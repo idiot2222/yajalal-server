@@ -44,4 +44,5 @@ public class AccountService {
 
         return List.of(new SimpleGrantedAuthority(role.toString()));
     }
+
 }
