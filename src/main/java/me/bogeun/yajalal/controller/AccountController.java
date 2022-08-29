@@ -20,7 +20,7 @@ public class AccountController {
 
     @PostMapping("/join")
     public String join(@RequestBody AccountJoinDto joinDto) {
-        accountService.joinNewAccount(joinDto);
+            accountService.joinNewAccount(joinDto);
 
         return "ok";
     }
@@ -41,5 +41,6 @@ public class AccountController {
                 .gender(gender)
                 .build();
     }
+
 
 }

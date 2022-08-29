@@ -9,6 +9,7 @@ import me.bogeun.yajalal.security.providers.FormLoginProvider;
 import me.bogeun.yajalal.security.providers.JwtAuthenticationProvider;
 import me.bogeun.yajalal.security.service.AccountDetailsService;
 import me.bogeun.yajalal.security.utils.JwtUtils;
+import me.bogeun.yajalal.security.utils.NorRequestMatcher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
@@ -18,9 +19,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -41,7 +40,6 @@ public class SecurityConfig {
                 .and()
                 .addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        ;
 
         return http.build();
     }
@@ -63,7 +61,7 @@ public class SecurityConfig {
     // filters ------------------------
     private FormLoginFilter loginFilter() {
         return new FormLoginFilter(
-                "/login",
+                new AntPathRequestMatcher("/login", "POST"),
                 authenticationManager(),
                 new FormLoginSuccessHandler(jwtUtils),
                 new FormLoginFailHandler(),
@@ -72,13 +70,15 @@ public class SecurityConfig {
     }
 
     private JwtAuthenticationFilter jwtAuthenticationFilter() {
+        NorRequestMatcher pathToSkipMatcher = new NorRequestMatcher(
+                new AntPathRequestMatcher("/account/join", "POST"),
+                new AntPathRequestMatcher("/account/current", "GET"),
+                new AntPathRequestMatcher("/login", "POST"),
+                new AntPathRequestMatcher("/logout", "POST")
+        );
 
         return new JwtAuthenticationFilter(
-                new AndRequestMatcher(
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/account/join", "POST")),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/account/current", "GET")),
-                        new NegatedRequestMatcher(new AntPathRequestMatcher("/login", "POST"))
-                ),
+                pathToSkipMatcher,
                 authenticationManager()
         );
     }

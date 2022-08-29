@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +26,13 @@ public class FormLoginFilter extends AbstractAuthenticationProcessingFilter {
     private final AccountDetailsService accountDetailsService;
 
 
-    public FormLoginFilter(String defaultFilterProcessesUrl,
+    public FormLoginFilter(RequestMatcher requestMatcher,
                            AuthenticationManager authenticationManager,
                            FormLoginSuccessHandler formLoginSuccessHandler,
                            FormLoginFailHandler formLoginFailHandler,
                            AccountDetailsService accountDetailsService) {
 
-        super(defaultFilterProcessesUrl, authenticationManager);
+        super(requestMatcher, authenticationManager);
 
         this.formLoginSuccessHandler = formLoginSuccessHandler;
         this.formLoginFailHandler = formLoginFailHandler;

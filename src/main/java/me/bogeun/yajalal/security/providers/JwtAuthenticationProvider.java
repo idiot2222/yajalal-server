@@ -3,14 +3,11 @@ package me.bogeun.yajalal.security.providers;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.security.tokens.JwtAuthenticationToken;
 import me.bogeun.yajalal.security.utils.JwtUtils;
-import me.bogeun.yajalal.service.AccountService;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -22,15 +19,19 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String token = (String) authentication.getPrincipal();
-        String username = jwtUtils.getUsername(token);
-        List<SimpleGrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority(jwtUtils.getRole(token)));
-
-        if (jwtUtils.isCorrectToken(token, username)) {
-            return JwtAuthenticationToken.authenticatedToken(token, grantedAuthorities);
+        String jwt = (String) authentication.getPrincipal();
+        if(jwt == null) {
+            throw new BadCredentialsException("token does not exist.");
         }
 
-        throw new AuthenticationServiceException("invalid password.");
+        String username = jwtUtils.getUsername(jwt);
+        List<SimpleGrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority(jwtUtils.getRole(jwt)));
+
+        if (jwtUtils.isCorrectToken(jwt, username)) {
+            return JwtAuthenticationToken.authenticatedToken(jwt, grantedAuthorities);
+        }
+
+        throw new BadCredentialsException("invalid password.");
     }
 
 
