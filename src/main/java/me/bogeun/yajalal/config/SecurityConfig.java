@@ -5,6 +5,7 @@ import me.bogeun.yajalal.security.filters.FormLoginFilter;
 import me.bogeun.yajalal.security.filters.JwtAuthenticationFilter;
 import me.bogeun.yajalal.security.handlers.FormLoginFailHandler;
 import me.bogeun.yajalal.security.handlers.FormLoginSuccessHandler;
+import me.bogeun.yajalal.security.handlers.NoRedirectLogoutSuccessHandler;
 import me.bogeun.yajalal.security.providers.FormLoginProvider;
 import me.bogeun.yajalal.security.providers.JwtAuthenticationProvider;
 import me.bogeun.yajalal.security.service.AccountDetailsService;
@@ -34,9 +35,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .cors().disable()
+                .cors()
+                .and()
                 .authorizeRequests()
                 .anyRequest().permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessHandler(new NoRedirectLogoutSuccessHandler())
                 .and()
                 .addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -82,6 +88,7 @@ public class SecurityConfig {
                 authenticationManager()
         );
     }
+
 
     // providers ----------------------
     @Bean
