@@ -18,12 +18,13 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 20)
     private String username;
 
+    @Column(length = 68)
     private String password;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 45)
     private String email;
 
     private LocalDate birthDate;
