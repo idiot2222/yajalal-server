@@ -39,8 +39,9 @@ public class FormLoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private void responseProcessing(HttpServletResponse response, String token) throws IOException {
         response.setStatus(200);
-        response.getWriter().write("login success");
+        response.getWriter().write(jwtUtils.getUsername(token));
         response.setHeader("Authorization", token);
+        response.setHeader("Access-Control-Expose-Headers", "Authorization");
     }
 
     private Role getRole(Authentication authentication) {
