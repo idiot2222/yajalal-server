@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/account/logout")
                 .logoutSuccessHandler(new NoRedirectLogoutSuccessHandler())
                 .and()
                 .addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -67,7 +67,7 @@ public class SecurityConfig {
     // filters ------------------------
     private FormLoginFilter loginFilter() {
         return new FormLoginFilter(
-                new AntPathRequestMatcher("/login", "POST"),
+                new AntPathRequestMatcher("/account/login", "POST"),
                 authenticationManager(),
                 new FormLoginSuccessHandler(jwtUtils),
                 new FormLoginFailHandler(),
@@ -79,8 +79,8 @@ public class SecurityConfig {
         NorRequestMatcher pathToSkipMatcher = new NorRequestMatcher(
                 new AntPathRequestMatcher("/account/join", "POST"),
                 new AntPathRequestMatcher("/account/current", "GET"),
-                new AntPathRequestMatcher("/login", "POST"),
-                new AntPathRequestMatcher("/logout", "POST")
+                new AntPathRequestMatcher("/account/login", "POST"),
+                new AntPathRequestMatcher("/account/logout", "POST")
         );
 
         return new JwtAuthenticationFilter(
