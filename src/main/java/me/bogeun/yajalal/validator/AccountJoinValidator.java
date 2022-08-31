@@ -26,6 +26,9 @@ public class AccountJoinValidator implements Validator {
         if(accountRepository.countByUsername(dto.getUsername()) > 0) {
             errors.reject("duplicated username.");
         }
+        if(accountRepository.countByNickname(dto.getNickname()) > 0) {
+            errors.reject("duplicated nickname.");
+        }
         if(accountRepository.countByEmail(dto.getEmail()) > 0) {
             errors.reject("duplicated email.");
         }

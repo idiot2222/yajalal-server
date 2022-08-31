@@ -13,6 +13,8 @@ public class AccountInfoDto {
 
     private String username;
 
+    private String nickname;
+
     private String email;
 
     private LocalDate birthDate;

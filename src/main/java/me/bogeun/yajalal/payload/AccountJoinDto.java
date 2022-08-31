@@ -15,6 +15,8 @@ public class AccountJoinDto {
 
     private String password;
 
+    private String nickname;
+
     private String email;
 
     private LocalDate birthDate;

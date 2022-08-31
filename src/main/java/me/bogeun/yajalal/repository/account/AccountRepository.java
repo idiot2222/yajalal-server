@@ -11,5 +11,7 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Account
 
     Long countByUsername(String username);
 
+    Long countByNickname(String nickname);
+
     Long countByEmail(String email);
 }

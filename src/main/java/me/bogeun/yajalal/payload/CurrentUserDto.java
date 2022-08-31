@@ -16,6 +16,8 @@ public class CurrentUserDto {
 
     private String username;
 
+    private String nickname;
+
     private String email;
 
 }
