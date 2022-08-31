@@ -12,12 +12,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CurrentUserDto {
 
+    private Long id;
+
     private String username;
 
     private String email;
-
-    private LocalDate birthDate;
-
-    private Gender gender;
 
 }

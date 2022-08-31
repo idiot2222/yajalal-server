@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.entity.Role;
 import me.bogeun.yajalal.mapper.AccountMapper;
+import me.bogeun.yajalal.payload.AccountInfoDto;
 import me.bogeun.yajalal.payload.AccountJoinDto;
 import me.bogeun.yajalal.repository.account.AccountRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -45,4 +46,13 @@ public class AccountService {
         return List.of(new SimpleGrantedAuthority(role.toString()));
     }
 
+    public Account getAccountById(Long id) {
+        return accountRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("invalid user id."));
+    }
+
+    public AccountInfoDto getAccountInfoById(Long id) {
+        Account account = getAccountById(id);
+
+        return accountMapper.accountToInfoDto(account);
+    }
 }

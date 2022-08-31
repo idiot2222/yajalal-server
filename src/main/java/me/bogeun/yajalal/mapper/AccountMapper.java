@@ -1,7 +1,9 @@
 package me.bogeun.yajalal.mapper;
 
 import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.payload.AccountInfoDto;
 import me.bogeun.yajalal.payload.AccountJoinDto;
+import me.bogeun.yajalal.payload.CurrentUserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,4 +15,7 @@ public interface AccountMapper {
     @Mapping(target = "isGenderPublic", source = "genderPublic")
     Account joinDtoToEntity(AccountJoinDto joinDto);
 
+    CurrentUserDto accountToCurrentUserDto(Account account);
+
+    AccountInfoDto accountToInfoDto(Account account);
 }

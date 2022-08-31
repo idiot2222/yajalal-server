@@ -28,6 +28,8 @@ public class SecurityConfig {
 
     private final AccountDetailsService accountDetailsService;
 
+    private final FormLoginSuccessHandler formLoginSuccessHandler;
+
     private final JwtUtils jwtUtils;
 
 
@@ -69,7 +71,7 @@ public class SecurityConfig {
         return new FormLoginFilter(
                 new AntPathRequestMatcher("/account/login", "POST"),
                 authenticationManager(),
-                new FormLoginSuccessHandler(jwtUtils),
+                formLoginSuccessHandler,
                 new FormLoginFailHandler(),
                 accountDetailsService
         );
