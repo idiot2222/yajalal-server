@@ -23,8 +23,4 @@ public class AccountJoinDto {
 
     private Role role;
 
-    private boolean isBirthDatePublic;
-
-    private boolean isGenderPublic;
-
 }

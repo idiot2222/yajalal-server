@@ -11,8 +11,6 @@ import org.mapstruct.Mapping;
 public interface AccountMapper {
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "isBirthDatePublic", source = "birthDatePublic")
-    @Mapping(target = "isGenderPublic", source = "genderPublic")
     Account joinDtoToEntity(AccountJoinDto joinDto);
 
     CurrentUserDto accountToCurrentUserDto(Account account);

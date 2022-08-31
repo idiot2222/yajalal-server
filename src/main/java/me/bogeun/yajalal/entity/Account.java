@@ -35,13 +35,9 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private boolean isBirthDatePublic;
-
-    private boolean isGenderPublic;
-
 
     @Builder
-    public Account(Long id, String username, String password, String email, LocalDate birthDate, Gender gender, Role role, boolean isBirthDatePublic, boolean isGenderPublic) {
+    public Account(Long id, String username, String password, String email, LocalDate birthDate, Gender gender, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -49,7 +45,5 @@ public class Account {
         this.birthDate = birthDate;
         this.gender = gender;
         this.role = role;
-        this.isBirthDatePublic = isBirthDatePublic;
-        this.isGenderPublic = isGenderPublic;
     }
 }
