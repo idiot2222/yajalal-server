@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.validator;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.payload.AccountUpdateDto;
+import me.bogeun.yajalal.payload.account.AccountUpdateDto;
 import me.bogeun.yajalal.repository.account.AccountRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

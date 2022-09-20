@@ -1,9 +1,9 @@
 package me.bogeun.yajalal.mapper;
 
 import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.payload.AccountInfoDto;
-import me.bogeun.yajalal.payload.AccountJoinDto;
-import me.bogeun.yajalal.payload.CurrentUserDto;
+import me.bogeun.yajalal.payload.account.AccountInfoDto;
+import me.bogeun.yajalal.payload.account.AccountJoinDto;
+import me.bogeun.yajalal.payload.account.CurrentUserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

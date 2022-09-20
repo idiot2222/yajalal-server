@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.security.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.bogeun.yajalal.payload.LoginDto;
+import me.bogeun.yajalal.payload.account.LoginDto;
 import me.bogeun.yajalal.security.handlers.FormLoginFailHandler;
 import me.bogeun.yajalal.security.handlers.FormLoginSuccessHandler;
 import me.bogeun.yajalal.security.service.AccountDetailsService;

@@ -1,9 +1,8 @@
 package me.bogeun.yajalal.validator;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.payload.AccountJoinDto;
+import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import me.bogeun.yajalal.repository.account.AccountRepository;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload;
+package me.bogeun.yajalal.payload.account;
 
 import lombok.Getter;
 

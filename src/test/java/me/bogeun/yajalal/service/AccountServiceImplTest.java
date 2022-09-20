@@ -2,7 +2,7 @@ package me.bogeun.yajalal.service;
 
 import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.entity.Gender;
-import me.bogeun.yajalal.payload.AccountJoinDto;
+import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

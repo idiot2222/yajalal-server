@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload;
+package me.bogeun.yajalal.payload.account;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,11 +7,13 @@ import me.bogeun.yajalal.entity.Role;
 
 import java.time.LocalDate;
 
-@Setter
 @Getter
-public class AccountInfoDto {
+@Setter
+public class AccountJoinDto {
 
     private String username;
+
+    private String password;
 
     private String nickname;
 
