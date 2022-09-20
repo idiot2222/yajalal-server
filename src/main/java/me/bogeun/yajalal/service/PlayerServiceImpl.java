@@ -1,10 +1,12 @@
 package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
+import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.entity.Player;
 import me.bogeun.yajalal.mapper.PlayerMapper;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
+import me.bogeun.yajalal.repository.account.AccountRepository;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +15,15 @@ import org.springframework.stereotype.Service;
 public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final AccountService accountService;
     private final PlayerMapper playerMapper;
 
 
     @Override
-    public Player createNewPlayer(PlayerCreateDto createDto) {
+    public Player createNewPlayer(Long userId, PlayerCreateDto createDto) {
         Player newPlayer = playerMapper.createDtoToEntity(createDto);
+        Account account = accountService.getAccountById(userId);
+        newPlayer.setAccount(account);
 
         return playerRepository.save(newPlayer);
     }

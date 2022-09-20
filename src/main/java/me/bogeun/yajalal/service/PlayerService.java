@@ -6,7 +6,7 @@ import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
 
 public interface PlayerService {
 
-    Player createNewPlayer(PlayerCreateDto createDto);
+    Player createNewPlayer(Long userId, PlayerCreateDto createDto);
 
     Player getPlayerById(Long playerId);
 
