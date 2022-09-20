@@ -18,7 +18,7 @@ public class YajalalApplication implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         String[] beans = applicationContext.getBeanDefinitionNames();
 
         for (String bean : beans) {

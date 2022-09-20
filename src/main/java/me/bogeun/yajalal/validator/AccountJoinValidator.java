@@ -23,13 +23,13 @@ public class AccountJoinValidator implements Validator {
     public void validate(Object target, Errors errors) {
         AccountJoinDto dto = (AccountJoinDto) target;
 
-        if(accountRepository.countByUsername(dto.getUsername()) > 0) {
+        if(accountRepository.existsByUsername(dto.getUsername())) {
             errors.reject("duplicated username.");
         }
-        if(accountRepository.countByNickname(dto.getNickname()) > 0) {
+        if(accountRepository.existsByNickname(dto.getNickname())) {
             errors.reject("duplicated nickname.");
         }
-        if(accountRepository.countByEmail(dto.getEmail()) > 0) {
+        if(accountRepository.existsByEmail(dto.getEmail())) {
             errors.reject("duplicated email.");
         }
     }

@@ -24,7 +24,7 @@ public class Account {
     @Column(length = 68)
     private String password;
 
-    @Column(unique = true, length = 20)
+    @Column(unique = true, length = 10)
     private String nickname;
 
     @Column(unique = true, length = 45)
@@ -40,10 +40,12 @@ public class Account {
 
 
     @Builder
-    public Account(Long id, String username, String password, String email, LocalDate birthDate, Gender gender, Role role) {
+
+    public Account(Long id, String username, String password, String nickname, String email, LocalDate birthDate, Gender gender, Role role) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.nickname = nickname;
         this.email = email;
         this.birthDate = birthDate;
         this.gender = gender;

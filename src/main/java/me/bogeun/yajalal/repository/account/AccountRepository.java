@@ -9,9 +9,9 @@ public interface AccountRepository extends JpaRepository<Account, Long>, Account
 
     Optional<Account> findByUsername(String username);
 
-    Long countByUsername(String username);
+    boolean existsByUsername(String username);
 
-    Long countByNickname(String nickname);
+    boolean existsByNickname(String nickname);
 
-    Long countByEmail(String email);
+    boolean existsByEmail(String email);
 }

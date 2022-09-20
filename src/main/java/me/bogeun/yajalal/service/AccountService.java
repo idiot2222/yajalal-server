@@ -6,6 +6,7 @@ import me.bogeun.yajalal.entity.Role;
 import me.bogeun.yajalal.mapper.AccountMapper;
 import me.bogeun.yajalal.payload.AccountInfoDto;
 import me.bogeun.yajalal.payload.AccountJoinDto;
+import me.bogeun.yajalal.payload.AccountUpdateDto;
 import me.bogeun.yajalal.repository.account.AccountRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -54,5 +55,20 @@ public class AccountService {
         Account account = getAccountById(id);
 
         return accountMapper.accountToInfoDto(account);
+    }
+
+    public void updateAccountInfo(Long id, AccountUpdateDto updateDto) {
+        Account account = getAccountById(id);
+        String nickname = updateDto.getNickname();
+        String password = updateDto.getPassword();
+
+        if(nickname.length() != 0) {
+            account.setNickname(updateDto.getNickname());
+        }
+        if(password.length() != 0) {
+            account.setPassword(passwordEncoder.encode(updateDto.getPassword()));
+        }
+
+        accountRepository.save(account);
     }
 }
