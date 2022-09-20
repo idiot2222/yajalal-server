@@ -1,7 +1,5 @@
 package me.bogeun.yajalal.entity;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +25,7 @@ public class Player {
     private Position mainPosition;
 
     @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "sub_positions")
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Position> subPositions = new ArrayList<>();
 
