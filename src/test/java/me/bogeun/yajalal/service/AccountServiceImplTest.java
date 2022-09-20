@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @SpringBootTest
-class AccountServiceTest {
+class AccountServiceImplTest {
 
     @Autowired
-    AccountService accountService;
+    AccountServiceImpl accountServiceImpl;
 
     @Test
     void join() {
@@ -28,7 +28,7 @@ class AccountServiceTest {
         dto.setBirthDate(LocalDate.of(1995, 5, 30));
         dto.setGender(Gender.MALE);
 
-        Account account = accountService.joinNewAccount(dto);
+        Account account = accountServiceImpl.joinNewAccount(dto);
 
         assertEquals(dto.getUsername(), account.getUsername());
         assertEquals(dto.getPassword(), account.getPassword());

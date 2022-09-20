@@ -1,74 +1,25 @@
 package me.bogeun.yajalal.service;
 
-import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.entity.Role;
-import me.bogeun.yajalal.mapper.AccountMapper;
 import me.bogeun.yajalal.payload.AccountInfoDto;
 import me.bogeun.yajalal.payload.AccountJoinDto;
 import me.bogeun.yajalal.payload.AccountUpdateDto;
-import me.bogeun.yajalal.repository.account.AccountRepository;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
-@RequiredArgsConstructor
-@Service
-public class AccountService {
+public interface AccountService {
 
-    private final AccountRepository accountRepository;
+    Account joinNewAccount(AccountJoinDto joinDto);
 
-    private final PasswordEncoder passwordEncoder;
+    Account getAccountByUsername(String username);
 
-    private final AccountMapper accountMapper;
+    Collection<? extends GrantedAuthority> getAuthorities(String username);
 
+    Account getAccountById(Long id);
 
-    public Account joinNewAccount(AccountJoinDto joinDto) {
-        joinDto.setPassword(passwordEncoder.encode(joinDto.getPassword()));
+    AccountInfoDto getAccountInfoById(Long id);
 
-        Account account = accountMapper.joinDtoToEntity(joinDto);
-        account.setRole(Role.COMMON);
+    void updateAccountInfo(Long id, AccountUpdateDto updateDto);
 
-        return accountRepository.save(account);
-    }
-
-    public Account getAccountByUsername(String username) {
-        return accountRepository.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("invalid username."));
-    }
-
-    public Collection<? extends GrantedAuthority> getAuthorities(String username) {
-        Role role = accountRepository.getRoleByUsername(username);
-
-        return List.of(new SimpleGrantedAuthority(role.toString()));
-    }
-
-    public Account getAccountById(Long id) {
-        return accountRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("invalid user id."));
-    }
-
-    public AccountInfoDto getAccountInfoById(Long id) {
-        Account account = getAccountById(id);
-
-        return accountMapper.accountToInfoDto(account);
-    }
-
-    public void updateAccountInfo(Long id, AccountUpdateDto updateDto) {
-        Account account = getAccountById(id);
-        String nickname = updateDto.getNickname();
-        String password = updateDto.getPassword();
-
-        if(nickname.length() != 0) {
-            account.setNickname(updateDto.getNickname());
-        }
-        if(password.length() != 0) {
-            account.setPassword(passwordEncoder.encode(updateDto.getPassword()));
-        }
-
-        accountRepository.save(account);
-    }
 }
