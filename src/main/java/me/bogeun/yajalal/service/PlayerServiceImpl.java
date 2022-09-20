@@ -64,8 +64,8 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player updatePlayerInfo(Long playerId, PlayerUpdateDto updateDto) {
-        Player player = getPlayerById(playerId);
+    public Player updatePlayerInfo(Long userId, PlayerUpdateDto updateDto) {
+        Player player = getPlayerByUserId(userId);
         player.setName(updateDto.getName());
         player.setLength(updateDto.getLength());
         player.setWeight(updateDto.getWeight());

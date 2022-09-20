@@ -19,6 +19,6 @@ public interface PlayerService {
 
     Player getPlayerByName(String playerName);
 
-    Player updatePlayerInfo(Long playerId, PlayerUpdateDto updateDto);
+    Player updatePlayerInfo(Long userId, PlayerUpdateDto updateDto);
 
 }
