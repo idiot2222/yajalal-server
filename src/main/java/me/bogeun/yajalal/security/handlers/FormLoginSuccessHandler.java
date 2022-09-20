@@ -45,11 +45,13 @@ public class FormLoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private void responseProcessing(HttpServletResponse response, Account account) throws IOException {
         String token = jwtUtils.generateToken(account.getUsername(), account.getRole());
+        String refreshToken = jwtUtils.generateRefreshToken(account.getUsername(), account.getRole());
         CurrentUserDto dto = accountMapper.accountToCurrentUserDto(account);
 
         response.setStatus(200);
         response.setHeader("Authorization", token);
-        response.setHeader("Access-Control-Expose-Headers", "Authorization");
+        response.setHeader("RefreshToken", refreshToken);
+        response.setHeader("Access-Control-Expose-Headers", "Authorization, RefreshToken");
 
         response.getWriter().write(objectMapper.writeValueAsString(dto));
     }
