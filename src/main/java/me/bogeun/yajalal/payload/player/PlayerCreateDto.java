@@ -8,8 +8,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -32,6 +32,6 @@ public class PlayerCreateDto {
     @NotBlank
     private Position mainPosition;
 
-    private List<Position> subPositions = new ArrayList<>();
+    private Set<Position> subPositions = new HashSet<>();
 
 }

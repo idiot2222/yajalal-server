@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import me.bogeun.yajalal.entity.Position;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,5 +21,5 @@ public class PlayerInfoDto {
 
     private Position mainPosition;
 
-    private final List<Position> subPositions = new ArrayList<>();
+    private final Set<Position> subPositions = new HashSet<>();
 }

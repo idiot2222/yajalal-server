@@ -4,8 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,6 +35,6 @@ public class Player {
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "sub_positions")
     @ElementCollection(fetch = FetchType.LAZY)
-    private List<Position> subPositions = new ArrayList<>();
+    private Set<Position> subPositions = new HashSet<>();
 
 }
