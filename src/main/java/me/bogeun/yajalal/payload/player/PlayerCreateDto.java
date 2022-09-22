@@ -18,12 +18,12 @@ public class PlayerCreateDto {
     @Length(min = 1, max = 10)
     private String name;
 
-    @Min(80)
+    @Min(50)
     @Max(230)
     private Integer length;
 
-    @Min(80)
-    @Max(230)
+    @Min(30)
+    @Max(200)
     private Integer weight;
 
     @Length(max = 100)
