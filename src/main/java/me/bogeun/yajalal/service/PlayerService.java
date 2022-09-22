@@ -26,5 +26,4 @@ public interface PlayerService {
 
     Player updatePlayerInfo(Long userId, PlayerUpdateDto updateDto);
 
-    List<Position> getSubPositionsByUserId(Long userId);
 }

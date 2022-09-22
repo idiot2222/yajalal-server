@@ -24,7 +24,6 @@ public class PlayerServiceImpl implements PlayerService {
 
 
     @Override
-    @Transactional
     public Player createNewPlayer(Long userId, PlayerCreateDto createDto) {
         Player newPlayer = playerMapper.createDtoToEntity(createDto);
         Account account = accountService.getAccountById(userId);
@@ -47,31 +46,31 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public PlayerInfoDto getPlayerAllInfoByUserId(Long userId) {
-        PlayerInfoDto player = getPlayerInfoByUserId(userId);
-
-        player.getSubPositions().addAll(getSubPositionsByUserId(userId));
-
-        return player;
-    }
-
-
-    @Override
     public PlayerInfoDto getPlayerInfoById(Long playerId) {
         Player player = playerRepository.findById(playerId).orElseThrow(() -> new IllegalArgumentException("invalid player id."));
 
         return playerMapper.entityToInfoDto(player);
     }
 
-
     @Override
     public PlayerInfoDto getPlayerInfoByUserId(Long userId) {
         Account account = accountService.getAccountById(userId);
-
         Player player = playerRepository.findByAccount(account).orElseThrow(() -> new IllegalArgumentException("player not created."));
 
 
         return playerMapper.entityToInfoDto(player);
+    }
+
+    @Override
+    @Transactional
+    public PlayerInfoDto getPlayerAllInfoByUserId(Long userId) {
+        Account account = accountService.getAccountById(userId);
+        Player player = playerRepository.findByAccount(account).orElseThrow(() -> new IllegalArgumentException("player not created."));
+
+        PlayerInfoDto infoDto = playerMapper.entityToInfoDto(player);
+        infoDto.getSubPositions().addAll(player.getSubPositions());
+
+        return infoDto;
     }
 
     @Override
@@ -94,7 +93,4 @@ public class PlayerServiceImpl implements PlayerService {
         return player;
     }
 
-    public List<Position> getSubPositionsByUserId(Long userId) {
-        return playerRepository.findAllSubPositionsByUserId(userId);
-    }
 }
