@@ -13,7 +13,7 @@ public class PlayerInfoDto {
 
     private String name;
 
-    private Integer length;
+    private Integer height;
 
     private Integer weight;
 

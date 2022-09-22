@@ -20,7 +20,7 @@ public class PlayerCreateDto {
 
     @Min(50)
     @Max(230)
-    private Integer length;
+    private Integer height;
 
     @Min(30)
     @Max(200)

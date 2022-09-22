@@ -23,7 +23,7 @@ public class Player {
     @Column(name = "player_name", length = 10)
     private String name;
 
-    private Integer length;
+    private Integer height;
     private Integer weight;
 
     @Column(length = 100)
