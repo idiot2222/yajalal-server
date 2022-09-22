@@ -1,9 +1,12 @@
 package me.bogeun.yajalal.service;
 
 import me.bogeun.yajalal.entity.Player;
+import me.bogeun.yajalal.entity.Position;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
+
+import java.util.List;
 
 public interface PlayerService {
 
@@ -17,8 +20,11 @@ public interface PlayerService {
 
     PlayerInfoDto getPlayerInfoByUserId(Long userId);
 
+    PlayerInfoDto getPlayerAllInfoByUserId(Long userId);
+
     Player getPlayerByName(String playerName);
 
     Player updatePlayerInfo(Long userId, PlayerUpdateDto updateDto);
 
+    List<Position> getSubPositionsByUserId(Long userId);
 }

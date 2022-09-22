@@ -40,16 +40,30 @@ public class PlayerController {
     }
 
     @GetMapping("/info/{userId}")
-    public ResponseEntity<PlayerResponse> getInfoByAccount(@PathVariable Long userId, Errors errors) {
+    public ResponseEntity<PlayerResponse> getInfoByAccount(@PathVariable Long userId) {
         PlayerInfoDto playerInfo;
 
         try {
-            if (errors.hasErrors()) {
-                throw new IllegalArgumentException("error");
-            }
-
             playerInfo = playerService.getPlayerInfoByUserId(userId);
         } catch (Exception e) {
+            return ResponseEntity
+                    .status(409)
+                    .body(new PlayerResponse(e.getMessage()));
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(new PlayerResponse(playerInfo, "ok"));
+    }
+
+    @GetMapping("/allInfo/{userId}")
+    public ResponseEntity<PlayerResponse> getAllInfoByAccount(@PathVariable Long userId) {
+        PlayerInfoDto playerInfo;
+
+        try {
+            playerInfo = playerService.getPlayerAllInfoByUserId(userId);
+        } catch (Exception e) {
+
             return ResponseEntity
                     .status(409)
                     .body(new PlayerResponse(e.getMessage()));
