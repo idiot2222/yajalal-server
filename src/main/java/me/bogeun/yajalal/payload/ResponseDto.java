@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload.player;
+package me.bogeun.yajalal.payload;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,12 +10,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
-public class PlayerResponse {
+public class ResponseDto {
 
     private Object content;
     private String message;
 
-    public PlayerResponse(String message) {
+    public ResponseDto(String message) {
         this.message = message;
     }
 }
