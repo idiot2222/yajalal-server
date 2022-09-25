@@ -30,7 +30,7 @@ public class PlayerController {
             playerService.createNewPlayer(userId, createDto);
         } catch (Exception e) {
             return ResponseEntity
-                    .status(409)
+                    .status(400)
                     .body(new PlayerResponse(e.getMessage()));
         }
 
@@ -47,7 +47,7 @@ public class PlayerController {
             playerInfo = playerService.getPlayerInfoByUserId(userId);
         } catch (Exception e) {
             return ResponseEntity
-                    .status(409)
+                    .status(400)
                     .body(new PlayerResponse(e.getMessage()));
         }
 
@@ -65,7 +65,7 @@ public class PlayerController {
         } catch (Exception e) {
 
             return ResponseEntity
-                    .status(409)
+                    .status(400)
                     .body(new PlayerResponse(e.getMessage()));
         }
 
@@ -78,7 +78,7 @@ public class PlayerController {
     public ResponseEntity<PlayerResponse> updatePlayerInfoByUserId(@PathVariable Long userId, PlayerUpdateDto updateDto, Errors errors) {
         if (errors.hasErrors()) {
             return ResponseEntity
-                    .status(409)
+                    .status(400)
                     .body(new PlayerResponse("error"));
         }
 
