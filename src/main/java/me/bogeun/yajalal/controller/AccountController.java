@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/account")
@@ -26,7 +28,7 @@ public class AccountController {
 
 
     @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody AccountJoinDto joinDto, Errors errors) {
+    public ResponseEntity<String> join(@Valid  @RequestBody AccountJoinDto joinDto, Errors errors) {
         accountJoinValidator.validate(joinDto, errors);
         if (errors.hasErrors()) {
             return ResponseEntity
@@ -45,7 +47,7 @@ public class AccountController {
     }
 
     @PostMapping("/update/{id}")
-    public ResponseEntity<String> updateAccountInfo(@PathVariable Long id, @RequestBody AccountUpdateDto updateDto, Errors errors) {
+    public ResponseEntity<String> updateAccountInfo(@PathVariable Long id, @Valid @RequestBody AccountUpdateDto updateDto, Errors errors) {
         accountUpdateValidator.validate(updateDto, errors);
         if (errors.hasErrors()) {
             return ResponseEntity

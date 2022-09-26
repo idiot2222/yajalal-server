@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload;
+package me.bogeun.yajalal.payload.response;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,4 +18,5 @@ public class ResponseDto {
     public ResponseDto(String message) {
         this.message = message;
     }
+
 }

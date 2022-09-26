@@ -3,12 +3,14 @@ package me.bogeun.yajalal.controller;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
-import me.bogeun.yajalal.payload.ResponseDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
+import me.bogeun.yajalal.payload.response.ResponseDto;
 import me.bogeun.yajalal.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,7 +22,7 @@ public class PlayerController {
 
     @PostMapping("/create/{userId}")
     public ResponseEntity<ResponseDto> createPlayer(@PathVariable Long userId,
-                                                    @RequestBody PlayerCreateDto createDto,
+                                                    @Valid @RequestBody PlayerCreateDto createDto,
                                                     Errors errors) {
         try {
             if(errors.hasErrors()) {
@@ -75,7 +77,7 @@ public class PlayerController {
     }
 
     @PostMapping("/update/{userId}")
-    public ResponseEntity<ResponseDto> updatePlayerInfoByUserId(@PathVariable Long userId, PlayerUpdateDto updateDto, Errors errors) {
+    public ResponseEntity<ResponseDto> updatePlayerInfoByUserId(@PathVariable Long userId, @Valid @RequestBody PlayerUpdateDto updateDto, Errors errors) {
         if (errors.hasErrors()) {
             return ResponseEntity
                     .status(400)
