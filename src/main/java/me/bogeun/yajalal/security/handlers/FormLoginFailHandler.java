@@ -6,6 +6,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class FormLoginFailHandler implements AuthenticationFailureHandler {
 
@@ -16,7 +17,9 @@ public class FormLoginFailHandler implements AuthenticationFailureHandler {
 
     private void responseProcessing(HttpServletResponse response) throws IOException {
         response.setStatus(403);
-        response.getWriter().write("login fail");
+        PrintWriter writer = response.getWriter();
+        writer.write("login fail");
+        writer.flush();
     }
 
 }
