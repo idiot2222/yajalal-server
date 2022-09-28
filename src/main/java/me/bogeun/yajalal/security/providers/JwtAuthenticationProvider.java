@@ -20,12 +20,16 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String jwt = (String) authentication.getPrincipal();
-        if(jwt == null) {
-            throw new BadCredentialsException("token does not exist.");
-        }
+        String username;
+        List<SimpleGrantedAuthority> grantedAuthorities;
 
-        String username = jwtUtils.getUsername(jwt);
-        List<SimpleGrantedAuthority> grantedAuthorities = List.of(new SimpleGrantedAuthority(jwtUtils.getRole(jwt)));
+        try {
+            username = jwtUtils.getUsername(jwt);
+            grantedAuthorities = List.of(new SimpleGrantedAuthority(jwtUtils.getRole(jwt)));
+        }
+        catch (Exception e) {
+            throw new BadCredentialsException("token expired");
+        }
 
         if (jwtUtils.isCorrectToken(jwt, username)) {
             return JwtAuthenticationToken.authenticatedToken(jwt, grantedAuthorities);
