@@ -18,23 +18,25 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true, length = 20)
+    @Column(unique = true, length = 20, nullable = false)
     private String username;
 
-    @Column(length = 68)
+    @Column(length = 68, nullable = false)
     private String password;
 
-    @Column(unique = true, length = 10)
+    @Column(unique = true, length = 10, nullable = false)
     private String nickname;
 
-    @Column(unique = true, length = 45)
+    @Column(unique = true, length = 45, nullable = false)
     private String email;
 
     private LocalDate birthDate;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 

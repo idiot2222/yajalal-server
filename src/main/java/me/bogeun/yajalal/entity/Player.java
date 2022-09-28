@@ -20,18 +20,23 @@ public class Player {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @Column(name = "player_name", length = 10)
+    @Column(name = "player_name", length = 10, nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private Integer height;
+
+    @Column(nullable = false)
     private Integer weight;
 
     @Column(length = 100)
     private String description;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Position mainPosition;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "sub_positions")
     @ElementCollection(fetch = FetchType.LAZY)
