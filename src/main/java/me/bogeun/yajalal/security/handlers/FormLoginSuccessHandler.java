@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 @RequiredArgsConstructor
@@ -51,7 +52,9 @@ public class FormLoginSuccessHandler implements AuthenticationSuccessHandler {
         response.setHeader("Authorization", token);
         response.setHeader("Access-Control-Expose-Headers", "Authorization");
 
-        response.getWriter().write(objectMapper.writeValueAsString(dto));
+        PrintWriter writer = response.getWriter();
+        writer.write(objectMapper.writeValueAsString(dto));
+        writer.flush();
     }
 
 }
