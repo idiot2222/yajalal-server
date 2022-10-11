@@ -7,6 +7,7 @@ import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import me.bogeun.yajalal.payload.account.AccountUpdateDto;
 import me.bogeun.yajalal.payload.account.CurrentUserDto;
 import me.bogeun.yajalal.security.service.CurrentUser;
+import me.bogeun.yajalal.service.AccountService;
 import me.bogeun.yajalal.service.AccountServiceImpl;
 import me.bogeun.yajalal.validator.AccountJoinValidator;
 import me.bogeun.yajalal.validator.AccountUpdateValidator;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
 @RequestMapping("/account")
 public class AccountController {
 
-    private final AccountServiceImpl accountServiceImpl;
+    private final AccountService accountService;
 
     private final AccountJoinValidator accountJoinValidator;
     private final AccountUpdateValidator accountUpdateValidator;
@@ -36,14 +37,14 @@ public class AccountController {
                     .body("error");
         }
 
-        accountServiceImpl.joinNewAccount(joinDto);
+        accountService.joinNewAccount(joinDto);
 
         return ResponseEntity.ok("ok");
     }
 
     @GetMapping("/info/{id}")
     public AccountInfoDto getAccountInfo(@PathVariable Long id) {
-        return accountServiceImpl.getAccountInfoById(id);
+        return accountService.getAccountInfoById(id);
     }
 
     @PostMapping("/update/{id}")
@@ -55,7 +56,7 @@ public class AccountController {
                     .body("error");
         }
 
-        accountServiceImpl.updateAccountInfo(id, updateDto);
+        accountService.updateAccountInfo(id, updateDto);
 
         return ResponseEntity.ok("ok");
     }
