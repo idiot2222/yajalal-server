@@ -36,10 +36,15 @@ public class Player {
     @Enumerated(EnumType.STRING)
     private Position mainPosition;
 
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "sub_positions")
     @ElementCollection(fetch = FetchType.LAZY)
     private Set<Position> subPositions = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
 
 }

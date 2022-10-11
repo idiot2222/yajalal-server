@@ -30,6 +30,7 @@ public class Account {
     @Column(unique = true, length = 45, nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private LocalDate birthDate;
 
     @Column(nullable = false)
@@ -41,8 +42,12 @@ public class Account {
     private Role role;
 
 
-    @Builder
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id")
+    private Player player;
 
+
+    @Builder
     public Account(Long id, String username, String password, String nickname, String email, LocalDate birthDate, Gender gender, Role role) {
         this.id = id;
         this.username = username;

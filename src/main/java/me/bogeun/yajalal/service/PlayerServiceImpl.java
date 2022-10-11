@@ -3,7 +3,6 @@ package me.bogeun.yajalal.service;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.entity.Player;
-import me.bogeun.yajalal.entity.Position;
 import me.bogeun.yajalal.mapper.PlayerMapper;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
@@ -11,8 +10,6 @@ import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
