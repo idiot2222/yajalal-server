@@ -1,5 +1,6 @@
 package me.bogeun.yajalal.payload.player;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import me.bogeun.yajalal.entity.Position;
@@ -7,13 +8,13 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
+@Builder
 public class PlayerCreateDto {
 
     @Length(min = 1, max = 10)
@@ -33,6 +34,6 @@ public class PlayerCreateDto {
     @NotNull
     private Position mainPosition;
 
-    private Set<Position> subPositions = new HashSet<>();
+    private Set<Position> subPositions;
 
 }

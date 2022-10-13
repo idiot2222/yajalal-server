@@ -1,12 +1,10 @@
 package me.bogeun.yajalal.service;
 
 import me.bogeun.yajalal.entity.Player;
-import me.bogeun.yajalal.entity.Position;
+import me.bogeun.yajalal.entity.Team;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
-
-import java.util.List;
 
 public interface PlayerService {
 
@@ -26,4 +24,7 @@ public interface PlayerService {
 
     Player updatePlayerInfo(Long userId, PlayerUpdateDto updateDto);
 
+    void joinTheClub(Long playerId, Long teamId);
+
+    Team getTeamByPlayerId(Long playerId);
 }

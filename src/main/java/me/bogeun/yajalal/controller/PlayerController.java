@@ -1,6 +1,7 @@
 package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
+import me.bogeun.yajalal.entity.Player;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
@@ -89,6 +90,14 @@ public class PlayerController {
         return ResponseEntity
                 .ok()
                 .body(new ResponseDto("ok"));
+    }
+
+    @GetMapping("/playerId/{userId}")
+    public ResponseEntity<Long> getPlayerId(@PathVariable Long userId){
+        Player player = playerService.getPlayerByUserId(userId);
+
+        return ResponseEntity
+                .ok(player.getId());
     }
 
 }

@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,14 +39,14 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .cors()
-                .and()
+            .and()
                 .authorizeRequests()
                 .anyRequest().permitAll()
-                .and()
+            .and()
                 .logout()
                 .logoutUrl("/account/logout")
                 .logoutSuccessHandler(new NoRedirectLogoutSuccessHandler())
-                .and()
+            .and()
                 .addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 

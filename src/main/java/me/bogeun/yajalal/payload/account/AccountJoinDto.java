@@ -1,5 +1,6 @@
 package me.bogeun.yajalal.payload.account;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import me.bogeun.yajalal.entity.Gender;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 public class AccountJoinDto {
 
     private String username;

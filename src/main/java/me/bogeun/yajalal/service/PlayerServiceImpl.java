@@ -3,6 +3,7 @@ package me.bogeun.yajalal.service;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.Account;
 import me.bogeun.yajalal.entity.Player;
+import me.bogeun.yajalal.entity.Team;
 import me.bogeun.yajalal.mapper.PlayerMapper;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class PlayerServiceImpl implements PlayerService {
 
     private final PlayerRepository playerRepository;
+    private final TeamService teamService;
     private final AccountService accountService;
     private final PlayerMapper playerMapper;
 
@@ -88,6 +90,21 @@ public class PlayerServiceImpl implements PlayerService {
         playerRepository.save(player);
 
         return player;
+    }
+
+    @Override
+    public void joinTheClub(Long playerId, Long teamId) {
+        Player player = getPlayerById(playerId);
+        Team team = teamService.getTeamById(teamId);
+
+        player.setTeam(team);
+
+        playerRepository.save(player);
+    }
+
+    @Override
+    public Team getTeamByPlayerId(Long playerId) {
+        return playerRepository.getTeamByPlayerId(playerId);
     }
 
 }

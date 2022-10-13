@@ -21,12 +21,13 @@ class AccountServiceImplTest {
 
     @Test
     void join() {
-        AccountJoinDto dto = new AccountJoinDto();
-        dto.setUsername("test");
-        dto.setPassword("password");
-        dto.setEmail("test@email.com");
-        dto.setBirthDate(LocalDate.of(1995, 5, 30));
-        dto.setGender(Gender.MALE);
+        AccountJoinDto dto = AccountJoinDto.builder()
+                .username("test")
+                .password("password")
+                .email("test@email.com")
+                .birthDate(LocalDate.of(1995, 5, 30))
+                .gender(Gender.MALE)
+                .build();
 
         Account account = accountServiceImpl.joinNewAccount(dto);
 

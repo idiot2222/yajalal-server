@@ -1,10 +1,15 @@
 package me.bogeun.yajalal.entity.stat;
 
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.bogeun.yajalal.entity.Player;
 
 import javax.persistence.*;
 
+@Setter
 @Entity
+@NoArgsConstructor
 public class Pitching {
 
     @Id
@@ -23,13 +28,10 @@ public class Pitching {
 
     private Integer SV;
 
-    // ?? (?? ?? ??? ??)
     private Integer IP;
 
-    // ??
     private Integer R;
 
-    // ???
     private Integer ER;
 
     private Integer K;
@@ -39,4 +41,19 @@ public class Pitching {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id")
     Player player;
+
+    @Builder
+    public Pitching(Integer g, Integer GS, Integer w, Integer l, Integer h, Integer SV, Integer IP, Integer r, Integer ER, Integer k, Integer BB) {
+        G = g;
+        this.GS = GS;
+        W = w;
+        L = l;
+        H = h;
+        this.SV = SV;
+        this.IP = IP;
+        R = r;
+        this.ER = ER;
+        K = k;
+        this.BB = BB;
+    }
 }

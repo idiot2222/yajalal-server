@@ -24,7 +24,6 @@ public class Team {
     @Column(length = 100)
     private String description;
 
-    @Size(min = 9, max = 100)
     private Integer limitOfPlayer;
 
 }
