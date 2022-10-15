@@ -9,7 +9,6 @@ import me.bogeun.yajalal.payload.league.LeagueCreateDto;
 import me.bogeun.yajalal.payload.league.LeagueUpdateDto;
 import me.bogeun.yajalal.repository.league.LeagueRepository;
 import me.bogeun.yajalal.repository.team.TeamRepository;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
