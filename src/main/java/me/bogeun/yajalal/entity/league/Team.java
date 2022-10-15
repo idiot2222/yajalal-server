@@ -26,4 +26,7 @@ public class Team {
     @JoinColumn(name = "league_id")
     private League league;
 
+    @Enumerated(EnumType.STRING)
+    private TeamStatus teamStatus;
+
 }
