@@ -3,11 +3,7 @@ package me.bogeun.yajalal.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -25,5 +21,9 @@ public class Team {
     private String description;
 
     private Integer limitOfPlayer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "league_id")
+    private League league;
 
 }

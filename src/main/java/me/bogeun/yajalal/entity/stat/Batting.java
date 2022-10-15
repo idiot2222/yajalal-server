@@ -20,10 +20,8 @@ public class Batting {
 
     private Integer G;
 
-    // ??
     private Integer PA;
 
-    // ??
     private Integer AB;
 
     private Integer H;
