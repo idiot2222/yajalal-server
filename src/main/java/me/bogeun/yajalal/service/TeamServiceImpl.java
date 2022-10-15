@@ -3,6 +3,7 @@ package me.bogeun.yajalal.service;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.league.TeamStatus;
 import me.bogeun.yajalal.mapper.TeamMapper;
 import me.bogeun.yajalal.payload.team.*;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
@@ -24,6 +25,7 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team createNewTeam(TeamCreateDto createDto) {
         Team team = teamMapper.createDtoToEntity(createDto);
+        team.setTeamStatus(TeamStatus.NOT_JOINING);
 
         return teamRepository.save(team);
     }
