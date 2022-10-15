@@ -24,6 +24,7 @@ public class LeagueServiceImpl implements LeagueService {
     @Override
     public League createNewLeague(LeagueCreateDto createDto) {
         League league = leagueMapper.createDtoToEntity(createDto);
+        league.setLeagueStatus(LeagueStatus.WAITING);
 
         return leagueRepository.save(league);
     }
