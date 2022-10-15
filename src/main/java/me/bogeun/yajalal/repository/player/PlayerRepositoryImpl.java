@@ -8,7 +8,8 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static me.bogeun.yajalal.entity.QPlayer.player;
+import static me.bogeun.yajalal.entity.player.QPlayer.player;
+
 
 public class PlayerRepositoryImpl implements PlayerDynamicRepository {
 

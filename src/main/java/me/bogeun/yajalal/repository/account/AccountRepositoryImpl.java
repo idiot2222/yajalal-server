@@ -5,7 +5,8 @@ import me.bogeun.yajalal.entity.account.Role;
 
 import javax.persistence.EntityManager;
 
-import static me.bogeun.yajalal.entity.QAccount.account;
+import static me.bogeun.yajalal.entity.account.QAccount.account;
+
 
 public class AccountRepositoryImpl implements AccountDynamicRepository{
 
