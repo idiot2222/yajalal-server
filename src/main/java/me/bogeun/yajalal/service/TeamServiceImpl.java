@@ -20,6 +20,7 @@ public class TeamServiceImpl implements TeamService {
 
     private final TeamRepository teamRepository;
     private final PlayerRepository playerRepository;
+
     private final TeamMapper teamMapper;
 
     @Override
@@ -98,6 +99,15 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public League getLeagueByTeam(Team team) {
         return teamRepository.findLeagueByTeam(team);
+    }
+
+    @Override
+    public void readyToStartLeague(Long teamId) {
+        Team team = getTeamById(teamId);
+
+        team.setTeamStatus(TeamStatus.READY);
+
+        teamRepository.save(team);
     }
 
 }

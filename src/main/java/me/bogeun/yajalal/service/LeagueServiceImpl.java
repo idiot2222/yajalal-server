@@ -4,12 +4,15 @@ import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.league.LeagueStatus;
 import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.league.TeamStatus;
 import me.bogeun.yajalal.mapper.LeagueMapper;
 import me.bogeun.yajalal.payload.league.LeagueCreateDto;
 import me.bogeun.yajalal.payload.league.LeagueUpdateDto;
 import me.bogeun.yajalal.repository.league.LeagueRepository;
 import me.bogeun.yajalal.repository.team.TeamRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -35,6 +38,11 @@ public class LeagueServiceImpl implements LeagueService {
     }
 
     @Override
+    public List<Team> getTeamListByLeague(League league) {
+        return teamRepository.findTeamListByLeague(league);
+    }
+
+    @Override
     public void updateLeagueInfo(Long leagueId, LeagueUpdateDto updateDto) {
         League league = getLeagueById(leagueId);
 
@@ -50,7 +58,12 @@ public class LeagueServiceImpl implements LeagueService {
         League league = getLeagueById(leagueId);
         Team team = teamService.getTeamById(teamId);
 
+        if(team.getTeamStatus() != TeamStatus.NOT_JOINING) {
+            throw new IllegalArgumentException("this team is already participated league.");
+        }
+
         team.setLeague(league);
+        team.setTeamStatus(TeamStatus.JOINING);
 
         teamRepository.save(team);
     }
@@ -61,6 +74,7 @@ public class LeagueServiceImpl implements LeagueService {
         Team team = teamService.getTeamById(teamId);
 
         team.setLeague(null);
+        team.setTeamStatus(TeamStatus.NOT_JOINING);
 
         teamRepository.save(team);
     }
@@ -71,6 +85,8 @@ public class LeagueServiceImpl implements LeagueService {
         LeagueStatus leagueStatus = league.getLeagueStatus();
 
         if (leagueStatus == LeagueStatus.READY) {
+
+
             league.setLeagueStatus(LeagueStatus.PROCEEDING);
         }
         else {
@@ -89,5 +105,22 @@ public class LeagueServiceImpl implements LeagueService {
         else {
             throw new IllegalArgumentException("league status is not proceeding.");
         }
+    }
+
+    @Override
+    public void checkTeamsStatusInLeague(Long teamId) {
+        Team team = teamService.getTeamById(teamId);
+        League league = teamService.getLeagueByTeam(team);
+
+        List<Team> teamList = getTeamListByLeague(league);
+
+        for (Team t : teamList) {
+            if(t.getTeamStatus() != TeamStatus.READY) {
+                return;
+            }
+        }
+        league.setLeagueStatus(LeagueStatus.READY);
+
+        leagueRepository.save(league);
     }
 }

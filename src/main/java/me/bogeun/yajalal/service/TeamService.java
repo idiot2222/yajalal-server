@@ -27,4 +27,6 @@ public interface TeamService {
 
     League getLeagueByTeam(Team team);
 
+    void readyToStartLeague(Long teamId);
+
 }

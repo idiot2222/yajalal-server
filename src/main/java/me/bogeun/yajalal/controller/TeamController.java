@@ -5,6 +5,7 @@ import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.response.ResponseDto;
 import me.bogeun.yajalal.payload.team.PlayerStatResponse;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
+import me.bogeun.yajalal.service.LeagueService;
 import me.bogeun.yajalal.service.PlayerService;
 import me.bogeun.yajalal.service.TeamService;
 import me.bogeun.yajalal.validator.team.TeamCreateValidator;
@@ -21,6 +22,7 @@ public class TeamController {
 
     private final TeamService teamService;
     private final PlayerService playerService;
+    private final LeagueService leagueService;
 
     private final TeamCreateValidator teamCreateValidator;
 
@@ -68,6 +70,14 @@ public class TeamController {
 
         return ResponseEntity
                 .ok(new ResponseDto(teamPitchingStats, "ok"));
+    }
+
+    @PostMapping("/ready/{teamId}")
+    public ResponseEntity<String> readyToStartLeague(@PathVariable Long teamId) {
+        teamService.readyToStartLeague(teamId);
+        leagueService.checkTeamsStatusInLeague(teamId);
+
+        return ResponseEntity.ok("ok");
     }
 
 }
