@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.security.providers;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.security.service.UserAccount;
 import me.bogeun.yajalal.security.tokens.FormLoginToken;
 import org.springframework.security.authentication.AuthenticationProvider;

@@ -1,9 +1,6 @@
 package me.bogeun.yajalal.payload.account;
 
 import lombok.*;
-import me.bogeun.yajalal.entity.Gender;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter

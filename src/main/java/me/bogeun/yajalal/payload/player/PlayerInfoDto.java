@@ -2,7 +2,7 @@ package me.bogeun.yajalal.payload.player;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.bogeun.yajalal.entity.Position;
+import me.bogeun.yajalal.entity.player.Position;
 
 import java.util.HashSet;
 import java.util.Set;

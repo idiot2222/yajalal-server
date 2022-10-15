@@ -1,8 +1,7 @@
 package me.bogeun.yajalal.security.service;
 
 import lombok.Getter;
-import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.repository.account.AccountRepository;
+import me.bogeun.yajalal.entity.account.Account;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 

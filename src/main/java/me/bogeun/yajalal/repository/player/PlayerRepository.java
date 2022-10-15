@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.repository.player;
 
-import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.entity.Player;
+import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.player.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

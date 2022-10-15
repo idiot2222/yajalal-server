@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.repository.account;
 
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Role;
 
 public interface AccountDynamicRepository {
 

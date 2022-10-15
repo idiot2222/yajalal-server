@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.repository;
 
-import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.account.Role;
 import me.bogeun.yajalal.repository.account.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

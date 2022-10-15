@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.entity;
+package me.bogeun.yajalal.entity.league;
 
 import lombok.Getter;
 import lombok.Setter;

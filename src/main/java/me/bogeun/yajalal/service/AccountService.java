@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.service;
 
-import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.payload.account.AccountInfoDto;
 import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import me.bogeun.yajalal.payload.account.AccountUpdateDto;

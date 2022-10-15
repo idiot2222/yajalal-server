@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.service;
 
-import me.bogeun.yajalal.entity.Player;
-import me.bogeun.yajalal.entity.Team;
+import me.bogeun.yajalal.entity.player.Player;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;

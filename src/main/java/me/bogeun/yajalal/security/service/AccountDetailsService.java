@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.security.service;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.repository.account.AccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

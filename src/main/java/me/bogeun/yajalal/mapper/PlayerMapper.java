@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.mapper;
 
-import me.bogeun.yajalal.entity.Player;
+import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import org.mapstruct.Mapper;

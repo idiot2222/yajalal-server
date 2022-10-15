@@ -1,8 +1,8 @@
 package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.account.Role;
 import me.bogeun.yajalal.mapper.AccountMapper;
 import me.bogeun.yajalal.payload.account.AccountInfoDto;
 import me.bogeun.yajalal.payload.account.AccountJoinDto;

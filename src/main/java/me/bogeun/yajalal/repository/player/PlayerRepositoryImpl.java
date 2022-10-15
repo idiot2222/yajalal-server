@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.repository.player;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import me.bogeun.yajalal.entity.Team;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.team.PlayerStat;
 
 import javax.persistence.EntityManager;

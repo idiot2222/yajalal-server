@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Team;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.response.ResponseDto;
 import me.bogeun.yajalal.payload.team.PlayerStatResponse;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;

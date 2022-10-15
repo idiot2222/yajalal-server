@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.repository.account;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Role;
 
 import javax.persistence.EntityManager;
 

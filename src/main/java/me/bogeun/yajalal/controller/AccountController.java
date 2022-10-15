@@ -1,14 +1,13 @@
 package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.payload.account.AccountInfoDto;
 import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import me.bogeun.yajalal.payload.account.AccountUpdateDto;
 import me.bogeun.yajalal.payload.account.CurrentUserDto;
 import me.bogeun.yajalal.security.service.CurrentUser;
 import me.bogeun.yajalal.service.AccountService;
-import me.bogeun.yajalal.service.AccountServiceImpl;
 import me.bogeun.yajalal.validator.AccountJoinValidator;
 import me.bogeun.yajalal.validator.AccountUpdateValidator;
 import org.springframework.http.ResponseEntity;

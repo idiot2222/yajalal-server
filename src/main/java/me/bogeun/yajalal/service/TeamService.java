@@ -1,6 +1,7 @@
 package me.bogeun.yajalal.service;
 
-import me.bogeun.yajalal.entity.Team;
+import me.bogeun.yajalal.entity.league.League;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.team.PlayerStatResponse;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
 import me.bogeun.yajalal.payload.team.TeamInfoDto;
@@ -23,4 +24,7 @@ public interface TeamService {
     List<PlayerStatResponse> getTeamBattingStats(Long teamId, List<String> stats);
 
     List<PlayerStatResponse> getTeamPitchingStats(Long teamId, List<String> stats);
+
+    League getLeagueByTeam(Team team);
+
 }

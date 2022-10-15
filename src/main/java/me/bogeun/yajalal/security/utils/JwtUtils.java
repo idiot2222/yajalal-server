@@ -2,7 +2,7 @@ package me.bogeun.yajalal.security.utils;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

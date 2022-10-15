@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.repository.account;
 
-import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.account.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

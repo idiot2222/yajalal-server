@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.security;
 
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Role;
 import me.bogeun.yajalal.security.utils.JwtUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

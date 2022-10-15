@@ -1,7 +1,8 @@
 package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Team;
+import me.bogeun.yajalal.entity.league.League;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.mapper.TeamMapper;
 import me.bogeun.yajalal.payload.team.*;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
@@ -90,6 +91,11 @@ public class TeamServiceImpl implements TeamService {
         }
 
         return result;
+    }
+
+    @Override
+    public League getLeagueByTeam(Team team) {
+        return teamRepository.findLeagueByTeam(team);
     }
 
 }

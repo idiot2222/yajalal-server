@@ -1,9 +1,13 @@
 package me.bogeun.yajalal;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.*;
-import me.bogeun.yajalal.entity.stat.Batting;
-import me.bogeun.yajalal.entity.stat.Pitching;
+import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.account.Gender;
+import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.player.Batting;
+import me.bogeun.yajalal.entity.player.Pitching;
+import me.bogeun.yajalal.entity.player.Player;
+import me.bogeun.yajalal.entity.player.Position;
 import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;

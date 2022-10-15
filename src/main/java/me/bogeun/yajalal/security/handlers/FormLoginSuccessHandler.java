@@ -2,7 +2,7 @@ package me.bogeun.yajalal.security.handlers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Account;
+import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.mapper.AccountMapper;
 import me.bogeun.yajalal.payload.account.CurrentUserDto;
 import me.bogeun.yajalal.security.utils.JwtUtils;

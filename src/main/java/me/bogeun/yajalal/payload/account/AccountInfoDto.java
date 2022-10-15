@@ -2,8 +2,8 @@ package me.bogeun.yajalal.payload.account;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.bogeun.yajalal.entity.Gender;
-import me.bogeun.yajalal.entity.Role;
+import me.bogeun.yajalal.entity.account.Gender;
+import me.bogeun.yajalal.entity.account.Role;
 
 import java.time.LocalDate;
 

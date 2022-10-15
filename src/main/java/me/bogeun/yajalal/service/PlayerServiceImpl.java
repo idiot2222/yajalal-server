@@ -1,9 +1,9 @@
 package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.Account;
-import me.bogeun.yajalal.entity.Player;
-import me.bogeun.yajalal.entity.Team;
+import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.player.Player;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.mapper.PlayerMapper;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;

@@ -1,9 +1,10 @@
-package me.bogeun.yajalal.entity;
+package me.bogeun.yajalal.entity.account;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.bogeun.yajalal.entity.player.Player;
 
 import javax.persistence.*;
 import java.time.LocalDate;

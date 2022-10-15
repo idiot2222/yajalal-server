@@ -1,6 +1,8 @@
-package me.bogeun.yajalal.entity;
+package me.bogeun.yajalal.entity.player;
 
 import lombok.*;
+import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.account.Account;
 
 import javax.persistence.*;
 import java.util.HashSet;
