@@ -18,11 +18,13 @@ public class Match {
     @OneToOne(fetch = FetchType.LAZY)
     private Team losingTeam;
 
+    private int winScore;
+
+    private int loseScore;
+
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = true)
     private League league;
-
-    @Column(length = 5)
-    private String result;
 
 }
