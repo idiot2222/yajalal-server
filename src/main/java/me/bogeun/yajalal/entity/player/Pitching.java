@@ -37,6 +37,8 @@ public class Pitching {
 
     private Integer BB;
 
+    private Integer ERA;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id")
     Player player;

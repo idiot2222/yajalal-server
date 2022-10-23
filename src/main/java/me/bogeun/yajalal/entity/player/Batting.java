@@ -43,6 +43,10 @@ public class Batting {
 
     private Integer CS;
 
+    private Integer OBP;
+
+    private Integer SLG;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id")
     Player player;
