@@ -37,4 +37,6 @@ public interface PlayerService {
     List<StatResponseDto> getTopBattersByLeague(League league, int count, String[] stats);
 
     List<StatResponseDto> getTopPitchersByLeague(League league, int count, String[] stats);
+
+    void setBackNumber(Long playerId, Integer backNumber);
 }

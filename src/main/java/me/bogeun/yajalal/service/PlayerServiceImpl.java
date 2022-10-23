@@ -147,4 +147,11 @@ public class PlayerServiceImpl implements PlayerService {
 
         return list;
     }
+
+    @Override
+    public void setBackNumber(Long playerId, Integer backNumber) {
+        Player player = getPlayerById(playerId);
+
+        player.setBackNumber(backNumber);
+    }
 }
