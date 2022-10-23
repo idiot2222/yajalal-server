@@ -40,6 +40,8 @@ public class Player {
     @Enumerated(EnumType.STRING)
     private Position mainPosition;
 
+    private Integer backNumber;
+
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
