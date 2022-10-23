@@ -1,9 +1,11 @@
 package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.payload.league.LeagueCreateDto;
-import me.bogeun.yajalal.payload.league.LeagueUpdateDto;
+import me.bogeun.yajalal.entity.league.League;
+import me.bogeun.yajalal.payload.league.LeagueDashboard;
+import me.bogeun.yajalal.payload.league.LeagueDto;
 import me.bogeun.yajalal.service.LeagueService;
+import me.bogeun.yajalal.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,18 +15,29 @@ import org.springframework.web.bind.annotation.*;
 public class LeagueController {
 
     private final LeagueService leagueService;
+    private final PlayerService playerService;
 
     @PostMapping("/create")
-    public ResponseEntity<String> createNewLeague(@RequestBody LeagueCreateDto createDto) {
+    public ResponseEntity<String> createNewLeague(@RequestBody LeagueDto createDto) {
         leagueService.createNewLeague(createDto);
 
         return ResponseEntity.ok("ok");
     }
 
+    @GetMapping("/dashboard/{playerId}")
+    public ResponseEntity<LeagueDashboard> getLeagueDashboardByPlayerId(@PathVariable Long playerId) {
+        League league = playerService.getLeagueByPlayerId(playerId);
+        LeagueDashboard dashboard = leagueService.getLeagueDashboardById(league.getId());
+
+        return ResponseEntity
+                .ok()
+                .body(dashboard);
+    }
+
     @PostMapping("/update/{leagueId}")
     public ResponseEntity<String> updateLeague(@PathVariable Long leagueId,
-                                               @RequestBody LeagueUpdateDto leagueUpdateDto) {
-        leagueService.updateLeagueInfo(leagueId, leagueUpdateDto);
+                                               @RequestBody LeagueDto leagueDto) {
+        leagueService.updateLeagueInfo(leagueId, leagueDto);
 
         return ResponseEntity.ok("ok");
     }

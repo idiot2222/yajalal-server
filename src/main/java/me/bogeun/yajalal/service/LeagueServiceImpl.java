@@ -6,12 +6,14 @@ import me.bogeun.yajalal.entity.league.LeagueStatus;
 import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.entity.league.TeamStatus;
 import me.bogeun.yajalal.mapper.LeagueMapper;
-import me.bogeun.yajalal.payload.league.LeagueCreateDto;
-import me.bogeun.yajalal.payload.league.LeagueUpdateDto;
+import me.bogeun.yajalal.payload.league.LeagueDashboard;
+import me.bogeun.yajalal.payload.league.LeagueDto;
+import me.bogeun.yajalal.payload.team.TeamRecordDto;
 import me.bogeun.yajalal.repository.league.LeagueRepository;
 import me.bogeun.yajalal.repository.team.TeamRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -25,8 +27,8 @@ public class LeagueServiceImpl implements LeagueService {
     private final LeagueMapper leagueMapper;
 
     @Override
-    public League createNewLeague(LeagueCreateDto createDto) {
-        League league = leagueMapper.createDtoToEntity(createDto);
+    public League createNewLeague(LeagueDto createDto) {
+        League league = leagueMapper.dtoToEntity(createDto);
         league.setLeagueStatus(LeagueStatus.WAITING);
 
         return leagueRepository.save(league);
@@ -43,12 +45,12 @@ public class LeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public void updateLeagueInfo(Long leagueId, LeagueUpdateDto updateDto) {
+    public void updateLeagueInfo(Long leagueId, LeagueDto leagueDto) {
         League league = getLeagueById(leagueId);
 
-        league.setName(updateDto.getName());
-        league.setDescription(updateDto.getDescription());
-        league.setLimitOfTeam(updateDto.getLimitOfTeam());
+        league.setName(leagueDto.getName());
+        league.setDescription(leagueDto.getDescription());
+        league.setLimitOfTeam(leagueDto.getLimitOfTeam());
 
         leagueRepository.save(league);
     }
@@ -68,7 +70,6 @@ public class LeagueServiceImpl implements LeagueService {
         teamRepository.save(team);
     }
 
-    // ?? ?? ??? ??? ??? ???? ?? ?? ? ??
     @Override
     public void leaveTeam(Long leagueId, Long teamId) {
         Team team = teamService.getTeamById(teamId);
@@ -123,4 +124,37 @@ public class LeagueServiceImpl implements LeagueService {
 
         leagueRepository.save(league);
     }
+
+    @Override
+    public LeagueDashboard getLeagueDashboardById(Long leagueId) {
+        League league = getLeagueById(leagueId);
+        List<Team> teamList = teamService.getTeamsByLeague(league);
+
+        LeagueDto leagueDto = leagueMapper.entityToDto(league);
+        List<TeamRecordDto> teamRecordList = convertRecordList(teamList);
+
+        return new LeagueDashboard(leagueDto, teamRecordList);
+    }
+
+    private List<TeamRecordDto> convertRecordList(List<Team> teamList) {
+        List<TeamRecordDto> list = new ArrayList<>();
+
+        for (Team team : teamList) {
+            Integer winCount = teamRepository.findWinCount(team);
+            Integer loseCount = teamRepository.findLoseCount(team);
+            Integer drawCount = teamRepository.findDrawCount(team);
+
+            TeamRecordDto recordDto = TeamRecordDto.builder()
+                    .teamName(team.getName())
+                    .win(winCount)
+                    .lose(loseCount)
+                    .draw(drawCount)
+                    .build();
+
+            list.add(recordDto);
+        }
+
+        return list;
+    }
+
 }

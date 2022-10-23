@@ -11,4 +11,10 @@ public interface TeamDynamicRepository {
 
     List<Team> findTeamListByLeague(League league);
 
+    Integer findWinCount(Team t);
+
+    Integer findLoseCount(Team t);
+
+    Integer findDrawCount(Team t);
+
 }

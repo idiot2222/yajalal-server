@@ -5,6 +5,8 @@ import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.entity.league.TeamStatus;
 import me.bogeun.yajalal.mapper.TeamMapper;
+import me.bogeun.yajalal.payload.stat.PlayerStat;
+import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.payload.team.*;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
 import me.bogeun.yajalal.repository.team.TeamRepository;
@@ -67,30 +69,30 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public List<PlayerStatResponse> getTeamBattingStats(Long teamId, List<String> stats) {
-        List<PlayerStatResponse> result = new ArrayList<>();
+    public List<StatResponseDto> getTeamBattingStats(Long teamId, List<String> stats) {
+        List<StatResponseDto> result = new ArrayList<>();
 
         for (String stat : stats) {
             List<PlayerStat> resultList = playerRepository.getTopBatterByTeam(teamId, stat, 5);
 
-            PlayerStatResponse playerStatResponse = new PlayerStatResponse(stat, resultList);
+            StatResponseDto statResponseDto = new StatResponseDto(stat, resultList);
 
-            result.add(playerStatResponse);
+            result.add(statResponseDto);
         }
 
         return result;
     }
 
     @Override
-    public List<PlayerStatResponse> getTeamPitchingStats(Long teamId, List<String> stats) {
-        List<PlayerStatResponse> result = new ArrayList<>();
+    public List<StatResponseDto> getTeamPitchingStats(Long teamId, List<String> stats) {
+        List<StatResponseDto> result = new ArrayList<>();
 
         for (String stat : stats) {
             List<PlayerStat> resultList = playerRepository.getTopPitcherByTeam(teamId, stat, 5);
 
-            PlayerStatResponse playerStatResponse = new PlayerStatResponse(stat, resultList);
+            StatResponseDto statResponseDto = new StatResponseDto(stat, resultList);
 
-            result.add(playerStatResponse);
+            result.add(statResponseDto);
         }
 
         return result;
@@ -110,4 +112,8 @@ public class TeamServiceImpl implements TeamService {
         teamRepository.save(team);
     }
 
+    @Override
+    public List<Team> getTeamsByLeague(League league) {
+        return teamRepository.findAllByLeague(league);
+    }
 }

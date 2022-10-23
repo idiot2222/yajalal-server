@@ -2,15 +2,21 @@ package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.mapper.PlayerMapper;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
+import me.bogeun.yajalal.payload.stat.PlayerStat;
+import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -107,4 +113,38 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.getTeamByPlayerId(playerId);
     }
 
+    @Override
+    public League getLeagueByPlayerId(Long playerId) {
+        Team team = getTeamByPlayerId(playerId);
+
+        return teamService.getLeagueByTeam(team);
+    }
+
+    @Override
+    @Transactional
+    public List<StatResponseDto> getTopBattersByLeague(League league, int count, String[] stats) {
+        List<StatResponseDto> list = new ArrayList<>();
+
+        for (String stat : stats) {
+            List<PlayerStat> batterStats = playerRepository.findTopBattersStatByLeague(league, stat, 5);
+
+            list.add(new StatResponseDto(stat, batterStats));
+        }
+
+        return list;
+    }
+
+    @Override
+    @Transactional
+    public List<StatResponseDto> getTopPitchersByLeague(League league, int count, String[] stats) {
+        List<StatResponseDto> list = new ArrayList<>();
+
+        for (String stat : stats) {
+            List<PlayerStat> pitcherStats = playerRepository.findTopPitchersStatByLeague(league, stat, 5);
+
+            list.add(new StatResponseDto(stat, pitcherStats));
+        }
+
+        return list;
+    }
 }

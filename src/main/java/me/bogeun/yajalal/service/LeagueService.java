@@ -2,20 +2,20 @@ package me.bogeun.yajalal.service;
 
 import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.league.Team;
-import me.bogeun.yajalal.payload.league.LeagueCreateDto;
-import me.bogeun.yajalal.payload.league.LeagueUpdateDto;
+import me.bogeun.yajalal.payload.league.LeagueDashboard;
+import me.bogeun.yajalal.payload.league.LeagueDto;
 
 import java.util.List;
 
 public interface LeagueService {
 
-    League createNewLeague(LeagueCreateDto createDto);
+    League createNewLeague(LeagueDto leagueDto);
 
     League getLeagueById(Long leagueId);
 
     List<Team> getTeamListByLeague(League league);
 
-    void updateLeagueInfo(Long leagueId, LeagueUpdateDto updateDto);
+    void updateLeagueInfo(Long leagueId, LeagueDto leagueDto);
 
     void joinTeam(Long leagueId, Long teamId);
 
@@ -26,5 +26,7 @@ public interface LeagueService {
     void endLeague(Long leagueId);
 
     void checkTeamsStatusInLeague(Long teamId);
+
+    LeagueDashboard getLeagueDashboardById(Long leagueId);
 
 }

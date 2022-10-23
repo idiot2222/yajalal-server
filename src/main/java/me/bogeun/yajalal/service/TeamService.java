@@ -2,7 +2,7 @@ package me.bogeun.yajalal.service;
 
 import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.league.Team;
-import me.bogeun.yajalal.payload.team.PlayerStatResponse;
+import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
 import me.bogeun.yajalal.payload.team.TeamInfoDto;
 import me.bogeun.yajalal.payload.team.TeamUpdateDto;
@@ -21,12 +21,13 @@ public interface TeamService {
 
     void updateTeamInfo(Long id, TeamUpdateDto updateDto);
 
-    List<PlayerStatResponse> getTeamBattingStats(Long teamId, List<String> stats);
+    List<StatResponseDto> getTeamBattingStats(Long teamId, List<String> stats);
 
-    List<PlayerStatResponse> getTeamPitchingStats(Long teamId, List<String> stats);
+    List<StatResponseDto> getTeamPitchingStats(Long teamId, List<String> stats);
 
     League getLeagueByTeam(Team team);
 
     void readyToStartLeague(Long teamId);
 
+    List<Team> getTeamsByLeague(League league);
 }

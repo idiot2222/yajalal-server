@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload.team;
+package me.bogeun.yajalal.payload.stat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -3,7 +3,7 @@ package me.bogeun.yajalal.controller;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.response.ResponseDto;
-import me.bogeun.yajalal.payload.team.PlayerStatResponse;
+import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
 import me.bogeun.yajalal.service.LeagueService;
 import me.bogeun.yajalal.service.PlayerService;
@@ -57,7 +57,7 @@ public class TeamController {
     @GetMapping("/dashboard/batting/{playerId}")
     public ResponseEntity<ResponseDto> getTeamBattingDashboardByPlayerId(@PathVariable Long playerId) {
         Long teamId = playerService.getTeamByPlayerId(playerId).getId();
-        List<PlayerStatResponse> teamBattingStats = teamService.getTeamBattingStats(teamId, List.of("H", "HR"));
+        List<StatResponseDto> teamBattingStats = teamService.getTeamBattingStats(teamId, List.of("H", "RBI", "R", "HR"));
 
         return ResponseEntity
                 .ok(new ResponseDto(teamBattingStats, "ok"));
@@ -66,7 +66,7 @@ public class TeamController {
     @GetMapping("/dashboard/pitching/{playerId}")
     public ResponseEntity<ResponseDto> getTeamPitchingDashboardByPlayerId(@PathVariable Long playerId) {
         Long teamId = playerService.getTeamByPlayerId(playerId).getId();
-        List<PlayerStatResponse> teamPitchingStats = teamService.getTeamPitchingStats(teamId, List.of("K", "W"));
+        List<StatResponseDto> teamPitchingStats = teamService.getTeamPitchingStats(teamId, List.of("W", "H", "SV", "K"));
 
         return ResponseEntity
                 .ok(new ResponseDto(teamPitchingStats, "ok"));

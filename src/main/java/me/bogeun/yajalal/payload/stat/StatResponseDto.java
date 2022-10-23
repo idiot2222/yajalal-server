@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload.team;
+package me.bogeun.yajalal.payload.stat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PlayerStatResponse {
+public class StatResponseDto {
 
     private String stat;
 
