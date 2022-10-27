@@ -52,7 +52,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         writer.write("token expired");
         writer.flush();
 
-        super.unsuccessfulAuthentication(request, response, failed);
+//        super.unsuccessfulAuthentication(request, response, failed);
     }
 
 }
