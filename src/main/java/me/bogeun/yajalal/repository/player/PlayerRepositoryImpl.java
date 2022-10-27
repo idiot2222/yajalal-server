@@ -34,7 +34,7 @@ public class PlayerRepositoryImpl implements PlayerDynamicRepository {
     @Override
     public List<PlayerStat> getTopBatterByTeam(Long teamId, String stat, int n) {
         String jpql = String.format(
-                "select p.name as name, b.%s as stat " +
+                "select p.name as name, b.%s as stat, p.backNumber " +
                 "from Player p inner join Batting b on p.id = b.player " +
                 "where p.team = %d " +
                 "order by b.%s desc",
@@ -45,14 +45,14 @@ public class PlayerRepositoryImpl implements PlayerDynamicRepository {
                 .setMaxResults(n)
                 .getResultList()
                 .stream()
-                .map(x -> new PlayerStat((String) x[0], (Integer) x[1]))
+                .map(x -> new PlayerStat((String) x[0], (Integer) x[1], (Integer) x[2]))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<PlayerStat> getTopPitcherByTeam(Long teamId, String stat, int n) {
         String jpql = String.format(
-                "select p.name as name, pc.%s as stat " +
+                "select p.name as name, pc.%s as stat, p.backNumber " +
                         "from Player p inner join Pitching pc on p.id = pc.player " +
                         "where p.team = %d " +
                         "order by pc.%s desc",
@@ -63,14 +63,14 @@ public class PlayerRepositoryImpl implements PlayerDynamicRepository {
                 .setMaxResults(n)
                 .getResultList()
                 .stream()
-                .map(x -> new PlayerStat((String) x[0], (Integer) x[1]))
+                .map(x -> new PlayerStat((String) x[0], (Integer) x[1], (Integer) x[2]))
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<PlayerStat> findTopBattersStatByLeague(League league, String stat, int count) {
         String jpql = String.format(
-                "select p.name as name, b.%s as stat " +
+                "select p.name as name, b.%s as stat, p.backNumber " +
                         "from Player p inner join Batting b on p.id = b.player, Team t " +
                         "where t.league = %d and t.id = p.team " +
                         "order by b.%s desc",
@@ -81,7 +81,7 @@ public class PlayerRepositoryImpl implements PlayerDynamicRepository {
                 .setMaxResults(count)
                 .getResultList()
                 .stream()
-                .map(x -> new PlayerStat((String) x[0], (Integer) x[1]))
+                .map(x -> new PlayerStat((String) x[0], (Integer) x[1], (Integer) x[2]))
                 .collect(Collectors.toList());
     }
 
@@ -89,7 +89,7 @@ public class PlayerRepositoryImpl implements PlayerDynamicRepository {
     @Override
     public List<PlayerStat> findTopPitchersStatByLeague(League league, String stat, int count) {
         String jpql = String.format(
-                "select p.name as name, pc.%s as stat " +
+                "select p.name as name, pc.%s as stat, p.backNumber " +
                         "from Player p inner join Pitching pc on p.id = pc.player, Team t " +
                         "where t.league = %d and t.id = p.team " +
                         "order by pc.%s desc",
@@ -100,7 +100,7 @@ public class PlayerRepositoryImpl implements PlayerDynamicRepository {
                 .setMaxResults(count)
                 .getResultList()
                 .stream()
-                .map(x -> new PlayerStat((String) x[0], (Integer) x[1]))
+                .map(x -> new PlayerStat((String) x[0], (Integer) x[1], (Integer) x[2]))
                 .collect(Collectors.toList());
     }
 }

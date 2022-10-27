@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.payload.stat;
+package me.bogeun.yajalal.payload.player;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,11 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PlayerStat {
+public class PlayerIdDto {
 
-    private String playerName;
+    private Long id;
 
-    private Integer statValue;
+    private String name;
 
     private Integer backNumber;
 
