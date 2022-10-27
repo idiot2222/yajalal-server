@@ -4,6 +4,7 @@ import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
+import me.bogeun.yajalal.payload.player.PlayerIdDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
@@ -39,4 +40,6 @@ public interface PlayerService {
     List<StatResponseDto> getTopPitchersByLeague(League league, int count, String[] stats);
 
     void setBackNumber(Long playerId, Integer backNumber);
+
+    List<PlayerIdDto> getPlayerAllByTeamId(Long teamId);
 }

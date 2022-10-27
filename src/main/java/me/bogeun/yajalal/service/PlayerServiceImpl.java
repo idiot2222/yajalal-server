@@ -7,6 +7,7 @@ import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.mapper.PlayerMapper;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
+import me.bogeun.yajalal.payload.player.PlayerIdDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
 import me.bogeun.yajalal.payload.stat.PlayerStat;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -153,5 +155,14 @@ public class PlayerServiceImpl implements PlayerService {
         Player player = getPlayerById(playerId);
 
         player.setBackNumber(backNumber);
+    }
+
+    @Override
+    public List<PlayerIdDto> getPlayerAllByTeamId(Long teamId) {
+        Team team = teamService.getTeamById(teamId);
+
+        return playerRepository.findAllByTeam(team).stream()
+                .map(x -> new PlayerIdDto(x.getId(), x.getName(), x.getBackNumber()))
+                .collect(Collectors.toList());
     }
 }

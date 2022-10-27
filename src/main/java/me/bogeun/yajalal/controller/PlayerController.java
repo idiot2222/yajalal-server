@@ -2,8 +2,10 @@ package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
+import me.bogeun.yajalal.entity.league.Team;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
+import me.bogeun.yajalal.payload.player.PlayerIdDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
 import me.bogeun.yajalal.payload.stat.StatRequestDto;
@@ -81,6 +83,24 @@ public class PlayerController {
         return ResponseEntity
                 .ok()
                 .body(new ResponseDto(playerInfo, "ok"));
+    }
+
+    @GetMapping("/playerList/{teamId}")
+    public ResponseEntity<ResponseDto> getPlayerListByTeam(@PathVariable Long teamId) {
+        List<PlayerIdDto> playerList = playerService.getPlayerAllByTeamId(teamId);
+
+        return ResponseEntity
+                .ok()
+                .body(new ResponseDto(playerList, "ok"));
+    }
+
+    @GetMapping("/teamId/{playerId}")
+    public ResponseEntity<Long> getTeamIdByPlayerId(@PathVariable Long playerId) {
+        Team team = playerService.getTeamByPlayerId(playerId);
+
+        return ResponseEntity
+                .ok()
+                .body(team.getId());
     }
 
     @PostMapping("/update/{userId}")

@@ -54,6 +54,7 @@ public class TeamController {
                 .ok(team.getName());
     }
 
+
     @GetMapping("/dashboard/batting/{playerId}")
     public ResponseEntity<ResponseDto> getTeamBattingDashboardByPlayerId(@PathVariable Long playerId) {
         Long teamId = playerService.getTeamByPlayerId(playerId).getId();
