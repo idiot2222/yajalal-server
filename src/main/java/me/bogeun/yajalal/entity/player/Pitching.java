@@ -29,8 +29,6 @@ public class Pitching {
 
     private Integer IP;
 
-    private Integer R;
-
     private Integer ER;
 
     private Integer K;
@@ -44,7 +42,7 @@ public class Pitching {
     Player player;
 
     @Builder
-    public Pitching(Integer g, Integer GS, Integer w, Integer l, Integer h, Integer SV, Integer IP, Integer r, Integer ER, Integer k, Integer BB) {
+    public Pitching(Integer g, Integer GS, Integer w, Integer l, Integer h, Integer SV, Integer IP, Integer ER, Integer k, Integer BB) {
         G = g;
         this.GS = GS;
         W = w;
@@ -52,7 +50,6 @@ public class Pitching {
         H = h;
         this.SV = SV;
         this.IP = IP;
-        R = r;
         this.ER = ER;
         K = k;
         this.BB = BB;
