@@ -1,11 +1,13 @@
 package me.bogeun.yajalal.entity.player;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
 @Setter
 @Entity
 @NoArgsConstructor
@@ -35,7 +37,8 @@ public class Pitching {
 
     private Integer BB;
 
-    private Integer ERA;
+    @Column(length = 5)
+    private String ERA;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id")
