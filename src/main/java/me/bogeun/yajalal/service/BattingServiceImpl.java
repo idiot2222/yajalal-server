@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.player.Batting;
+import me.bogeun.yajalal.entity.match.Batting;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.repository.player.BattingRepository;
 import org.springframework.stereotype.Service;

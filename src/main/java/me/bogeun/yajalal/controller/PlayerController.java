@@ -2,7 +2,7 @@ package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerIdDto;

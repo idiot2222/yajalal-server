@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.bogeun.yajalal.entity.account.Account;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 
 import javax.persistence.*;
 import java.util.HashSet;

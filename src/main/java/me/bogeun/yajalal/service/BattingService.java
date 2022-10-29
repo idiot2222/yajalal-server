@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.service;
 
-import me.bogeun.yajalal.entity.player.Batting;
+import me.bogeun.yajalal.entity.match.Batting;
 import me.bogeun.yajalal.entity.player.Player;
 
 public interface BattingService {

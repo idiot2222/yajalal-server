@@ -3,7 +3,7 @@ package me.bogeun.yajalal.entity.match;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 
 import javax.persistence.*;
 import java.time.LocalDate;

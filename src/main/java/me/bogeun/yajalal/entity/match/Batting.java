@@ -1,9 +1,10 @@
-package me.bogeun.yajalal.entity.player;
+package me.bogeun.yajalal.entity.match;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.bogeun.yajalal.entity.player.Player;
 
 import javax.persistence.*;
 

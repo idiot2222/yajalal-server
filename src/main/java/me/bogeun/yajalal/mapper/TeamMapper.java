@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.mapper;
 
 
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
 import me.bogeun.yajalal.payload.team.TeamInfoDto;
 import org.mapstruct.Mapper;

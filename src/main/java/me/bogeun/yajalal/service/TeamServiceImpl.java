@@ -2,8 +2,8 @@ package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
-import me.bogeun.yajalal.entity.league.TeamStatus;
+import me.bogeun.yajalal.entity.team.Team;
+import me.bogeun.yajalal.entity.team.TeamStatus;
 import me.bogeun.yajalal.mapper.TeamMapper;
 import me.bogeun.yajalal.payload.stat.PlayerStat;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;

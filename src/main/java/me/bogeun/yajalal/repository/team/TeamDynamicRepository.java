@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.repository.team;
 
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 
 import java.util.List;
 

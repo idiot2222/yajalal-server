@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.repository.player;
 
-import me.bogeun.yajalal.entity.player.Batting;
+import me.bogeun.yajalal.entity.match.Batting;
 import me.bogeun.yajalal.entity.player.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 

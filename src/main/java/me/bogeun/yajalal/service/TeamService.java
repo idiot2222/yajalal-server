@@ -1,7 +1,7 @@
 package me.bogeun.yajalal.service;
 
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
 import me.bogeun.yajalal.payload.team.TeamInfoDto;

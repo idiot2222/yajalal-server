@@ -1,10 +1,12 @@
 package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.league.League;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.payload.response.ResponseDto;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.payload.team.TeamCreateDto;
+import me.bogeun.yajalal.payload.team.TeamIdDto;
 import me.bogeun.yajalal.service.LeagueService;
 import me.bogeun.yajalal.service.PlayerService;
 import me.bogeun.yajalal.service.TeamService;
@@ -14,6 +16,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -54,6 +57,18 @@ public class TeamController {
                 .ok(team.getName());
     }
 
+    @GetMapping("/leagueList/{teamId}")
+    public ResponseEntity<ResponseDto> getLeagueListByTeam(@PathVariable Long teamId) {
+        Team team = teamService.getTeamById(teamId);
+        League league = teamService.getLeagueByTeam(team);
+        List<TeamIdDto> teamsByLeague = teamService.getTeamsByLeague(league)
+                .stream()
+                .map(x -> new TeamIdDto(x.getId(), x.getName()))
+                .collect(Collectors.toList());
+
+        return ResponseEntity
+                .ok(new ResponseDto(teamsByLeague, "ok"));
+    }
 
     @GetMapping("/dashboard/batting/{playerId}")
     public ResponseEntity<ResponseDto> getTeamBattingDashboardByPlayerId(@PathVariable Long playerId) {

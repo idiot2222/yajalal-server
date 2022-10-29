@@ -2,10 +2,10 @@ package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.entity.match.Match;
-import me.bogeun.yajalal.entity.player.Batting;
-import me.bogeun.yajalal.entity.player.Pitching;
+import me.bogeun.yajalal.entity.match.Batting;
+import me.bogeun.yajalal.entity.match.Pitching;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.payload.match.BattingRecordDto;
 import me.bogeun.yajalal.payload.match.MatchResultDto;

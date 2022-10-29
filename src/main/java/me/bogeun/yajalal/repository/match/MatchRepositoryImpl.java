@@ -1,15 +1,13 @@
 package me.bogeun.yajalal.repository.match;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.entity.match.Match;
 import me.bogeun.yajalal.entity.match.QMatch;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.Optional;
-
-import static me.bogeun.yajalal.entity.match.QMatch.match;
 
 public class MatchRepositoryImpl implements MatchDynamicRepository {
 

@@ -1,6 +1,6 @@
 package me.bogeun.yajalal.repository.match;
 
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.entity.match.Match;
 
 import java.time.LocalDate;

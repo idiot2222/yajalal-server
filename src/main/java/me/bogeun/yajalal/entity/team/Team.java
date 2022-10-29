@@ -1,7 +1,8 @@
-package me.bogeun.yajalal.entity.league;
+package me.bogeun.yajalal.entity.team;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.bogeun.yajalal.entity.league.League;
 
 import javax.persistence.*;
 
