@@ -4,6 +4,7 @@ import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.league.Team;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Match {
@@ -21,6 +22,8 @@ public class Match {
     private int winScore;
 
     private int loseScore;
+
+    private LocalDate matchDate;
 
 
     @OneToOne(fetch = FetchType.LAZY)
