@@ -43,34 +43,17 @@ public class Batting {
 
     private Integer CS;
 
-    private Integer AVG;
+    @Column(length = 5)
+    private String AVG;
 
-    private Integer OBP;
+    @Column(length = 5)
+    private String OBP;
 
-    private Integer SLG;
+    @Column(length = 5)
+    private String SLG;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id")
     Player player;
 
-
-    @Builder
-    public Batting(Integer g, Integer PA, Integer AB, Integer h, Integer h2, Integer h3, Integer HR, Integer RBI, Integer r, Integer SO, Integer BB, Integer SB, Integer CS, Integer OBP, Integer SLG, Player player) {
-        G = g;
-        this.PA = PA;
-        this.AB = AB;
-        H = h;
-        H2 = h2;
-        H3 = h3;
-        this.HR = HR;
-        this.RBI = RBI;
-        R = r;
-        this.SO = SO;
-        this.BB = BB;
-        this.SB = SB;
-        this.CS = CS;
-        this.OBP = OBP;
-        this.SLG = SLG;
-        this.player = player;
-    }
 }
