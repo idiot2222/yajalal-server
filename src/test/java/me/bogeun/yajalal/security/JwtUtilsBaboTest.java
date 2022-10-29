@@ -13,7 +13,7 @@ import java.util.Base64;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class JwtUtilsTest {
+class JwtUtilsBaboTest {
 
     @Autowired
     JwtUtils jwtUtils;

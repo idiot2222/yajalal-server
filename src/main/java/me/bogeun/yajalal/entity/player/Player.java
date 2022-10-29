@@ -1,8 +1,11 @@
 package me.bogeun.yajalal.entity.player;
 
-import lombok.*;
-import me.bogeun.yajalal.entity.league.Team;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import me.bogeun.yajalal.entity.account.Account;
+import me.bogeun.yajalal.entity.league.Team;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,7 +14,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Player {

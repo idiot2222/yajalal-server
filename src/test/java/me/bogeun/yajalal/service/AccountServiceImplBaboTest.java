@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Transactional
 @SpringBootTest
-class AccountServiceImplTest {
+class AccountServiceImplBaboTest {
 
     @Autowired
     AccountServiceImpl accountServiceImpl;
