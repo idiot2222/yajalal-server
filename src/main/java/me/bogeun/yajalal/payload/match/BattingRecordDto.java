@@ -10,16 +10,33 @@ public class BattingRecordDto {
 
     private PlayerIdDto player;
 
-    private Integer ab;
-    private Integer h;
-    private Integer h2;
-    private Integer h3;
-    private Integer hr;
-    private Integer bb;
-    private Integer rbi;
-    private Integer r;
-    private Integer sb;
-    private Integer cs;
-    private Integer k;
+    private int ab;
+    private int h;
+    private int h2;
+    private int h3;
+    private int hr;
+    private int bb;
+    private int rbi;
+    private int r;
+    private int sb;
+    private int cs;
+    private int k;
 
+    @Override
+    public String toString() {
+        return "BattingRecordDto{" +
+                "player=" + player.getName() +
+                ", ab=" + ab +
+                ", h=" + h +
+                ", h2=" + h2 +
+                ", h3=" + h3 +
+                ", hr=" + hr +
+                ", bb=" + bb +
+                ", rbi=" + rbi +
+                ", r=" + r +
+                ", sb=" + sb +
+                ", cs=" + cs +
+                ", k=" + k +
+                '}';
+    }
 }

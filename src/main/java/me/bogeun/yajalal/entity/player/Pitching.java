@@ -1,9 +1,9 @@
 package me.bogeun.yajalal.entity.player;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.bogeun.yajalal.payload.match.PitchingDecision;
 
 import javax.persistence.*;
 
@@ -17,25 +17,25 @@ public class Pitching {
     @GeneratedValue
     private Long id;
 
-    private Integer G;
+    private int G;
 
-    private Integer GS;
+    private int GS;
 
-    private Integer W;
+    private int W;
 
-    private Integer L;
+    private int L;
 
-    private Integer H;
+    private int H;
 
-    private Integer SV;
+    private int SV;
 
-    private Integer IP;
+    private int IP;
 
-    private Integer ER;
+    private int ER;
 
-    private Integer K;
+    private int K;
 
-    private Integer BB;
+    private int BB;
 
     @Column(length = 5)
     private String ERA;
@@ -44,17 +44,23 @@ public class Pitching {
     @JoinColumn(name = "player_id")
     Player player;
 
-    @Builder
-    public Pitching(Integer g, Integer GS, Integer w, Integer l, Integer h, Integer SV, Integer IP, Integer ER, Integer k, Integer BB) {
-        G = g;
-        this.GS = GS;
-        W = w;
-        L = l;
-        H = h;
-        this.SV = SV;
-        this.IP = IP;
-        this.ER = ER;
-        K = k;
-        this.BB = BB;
+
+    public void setDecision(PitchingDecision decision) {
+        if(decision == PitchingDecision.W) {
+            this.W++;
+        }
+        else if(decision == PitchingDecision.L) {
+            this.L++;
+        }
+        else if(decision == PitchingDecision.H) {
+            this.H++;
+        }
+        else if(decision == PitchingDecision.SV) {
+            this.SV++;
+        }
+    }
+
+    public Pitching(Player player) {
+        this.player = player;
     }
 }

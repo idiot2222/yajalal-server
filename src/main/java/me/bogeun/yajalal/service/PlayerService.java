@@ -42,4 +42,5 @@ public interface PlayerService {
     void setBackNumber(Long playerId, Integer backNumber);
 
     List<PlayerIdDto> getPlayerAllByTeamId(Long teamId);
+
 }

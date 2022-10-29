@@ -16,4 +16,8 @@ public class MatchResultDto {
 
     LocalDate matchDate;
 
+    Long myTeamId;
+
+    Long yourTeamId;
+
 }

@@ -17,31 +17,31 @@ public class Batting {
     @GeneratedValue
     private Long id;
 
-    private Integer G;
+    private int G;
 
-    private Integer PA;
+    private int PA;
 
-    private Integer AB;
+    private int AB;
 
-    private Integer H;
+    private int H;
 
-    private Integer H2;
+    private int H2;
 
-    private Integer H3;
+    private int H3;
 
-    private Integer HR;
+    private int HR;
 
-    private Integer RBI;
+    private int RBI;
 
-    private Integer R;
+    private int R;
 
-    private Integer SO;
+    private int SO;
 
-    private Integer BB;
+    private int BB;
 
-    private Integer SB;
+    private int SB;
 
-    private Integer CS;
+    private int CS;
 
     @Column(length = 5)
     private String AVG;
@@ -56,4 +56,7 @@ public class Batting {
     @JoinColumn(name = "player_id")
     Player player;
 
+    public Batting(Player player) {
+        this.player = player;
+    }
 }
