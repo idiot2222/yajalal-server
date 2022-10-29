@@ -43,6 +43,8 @@ public class Batting {
 
     private Integer CS;
 
+    private Integer AVG;
+
     private Integer OBP;
 
     private Integer SLG;
@@ -51,8 +53,9 @@ public class Batting {
     @JoinColumn(name = "player_id")
     Player player;
 
+
     @Builder
-    public Batting(Integer g, Integer PA, Integer AB, Integer h, Integer h2, Integer h3, Integer HR, Integer RBI, Integer r, Integer SO, Integer BB, Integer SB, Integer CS) {
+    public Batting(Integer g, Integer PA, Integer AB, Integer h, Integer h2, Integer h3, Integer HR, Integer RBI, Integer r, Integer SO, Integer BB, Integer SB, Integer CS, Integer OBP, Integer SLG, Player player) {
         G = g;
         this.PA = PA;
         this.AB = AB;
@@ -66,5 +69,8 @@ public class Batting {
         this.BB = BB;
         this.SB = SB;
         this.CS = CS;
+        this.OBP = OBP;
+        this.SLG = SLG;
+        this.player = player;
     }
 }
