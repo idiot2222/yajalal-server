@@ -3,6 +3,8 @@ package me.bogeun.yajalal.service;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.entity.league.League;
+import me.bogeun.yajalal.entity.match.Batting;
+import me.bogeun.yajalal.entity.match.Pitching;
 import me.bogeun.yajalal.entity.player.Player;
 import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.mapper.PlayerMapper;
@@ -10,6 +12,8 @@ import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerIdDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
+import me.bogeun.yajalal.payload.stat.PersonalBattingStat;
+import me.bogeun.yajalal.payload.stat.PersonalPitchingStat;
 import me.bogeun.yajalal.payload.stat.PlayerStat;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
@@ -27,7 +31,11 @@ public class PlayerServiceImpl implements PlayerService {
     private final PlayerRepository playerRepository;
     private final TeamService teamService;
     private final AccountService accountService;
+    private final BattingService battingService;
+    private final PitchingService pitchingService;
+
     private final PlayerMapper playerMapper;
+
 
 
     @Override
@@ -164,5 +172,23 @@ public class PlayerServiceImpl implements PlayerService {
         return playerRepository.findAllByTeam(team).stream()
                 .map(x -> new PlayerIdDto(x.getId(), x.getName(), x.getBackNumber()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public PersonalBattingStat getPersonalBattingStats(Long playerId) {
+        Player player = getPlayerById(playerId);
+        Team team = getTeamByPlayerId(playerId);
+        Batting batting = battingService.getBattingByPlayer(player);
+
+        return PersonalBattingStat.convertToStat(team.getName(), batting);
+    }
+
+    @Override
+    public PersonalPitchingStat getPersonalPitchingStats(Long playerId) {
+        Player player = getPlayerById(playerId);
+        Team team = getTeamByPlayerId(playerId);
+        Pitching pitching = pitchingService.getPitchingByPlayer(player);
+
+        return PersonalPitchingStat.convertToStat(team.getName(), pitching);
     }
 }

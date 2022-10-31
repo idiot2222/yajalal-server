@@ -34,6 +34,10 @@ public class Calculator {
     public static String calERA(int er, int ip) {
         double v = (double) er * 27 / ip;
 
-        return String.format("%.3f", v);
+        if(v > 99.99) {
+            v = 99.99;
+        }
+
+        return String.format("%.2f", v);
     }
 }

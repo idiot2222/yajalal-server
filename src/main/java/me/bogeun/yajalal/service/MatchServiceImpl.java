@@ -57,13 +57,17 @@ public class MatchServiceImpl implements MatchService {
 
             Pitching pitching = pitchingService.getPitchingByPlayer(player);
 
+            if(pitcher.getSeq() == 0) {
+                pitching.setGS(pitching.getGS() + 1);
+            }
+
             pitching.setG(pitching.getG() + 1);
             pitching.setGS(pitching.getGS() + pitcher.getSeq() == 1 ? 1 : 0);
             pitching.setIP(pitching.getIP() + pitcher.getIp());
             pitching.setER(pitching.getER() + pitcher.getEr());
             pitching.setK(pitching.getK() + pitcher.getK());
             pitching.setBB(pitching.getBB() + pitcher.getBb());
-            pitching.setERA(calERA(pitching.getIP(), pitching.getER()));
+            pitching.setERA(calERA(pitching.getER(), pitching.getIP()));
             pitching.setDecision(pitcher.getDecision());
 
             pitchingService.savePitching(pitching);

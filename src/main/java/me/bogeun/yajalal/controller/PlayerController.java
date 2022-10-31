@@ -2,16 +2,17 @@ package me.bogeun.yajalal.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.entity.player.Player;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerIdDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
-import me.bogeun.yajalal.payload.stat.StatRequestDto;
 import me.bogeun.yajalal.payload.response.ResponseDto;
+import me.bogeun.yajalal.payload.stat.PersonalBattingStat;
+import me.bogeun.yajalal.payload.stat.PersonalPitchingStat;
+import me.bogeun.yajalal.payload.stat.StatRequestDto;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
-import me.bogeun.yajalal.service.LeagueService;
 import me.bogeun.yajalal.service.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -26,7 +27,6 @@ import java.util.List;
 public class PlayerController {
 
     private final PlayerService playerService;
-    private final LeagueService leagueService;
 
 
     @PostMapping("/create/{userId}")
@@ -83,6 +83,24 @@ public class PlayerController {
         return ResponseEntity
                 .ok()
                 .body(new ResponseDto(playerInfo, "ok"));
+    }
+
+    @GetMapping("/stats/batting/{playerId}")
+    public ResponseEntity<ResponseDto> getPlayerBattingStat(@PathVariable Long playerId) {
+        PersonalBattingStat battingStat = playerService.getPersonalBattingStats(playerId);
+
+        return ResponseEntity
+                .ok()
+                .body(new ResponseDto(battingStat, "ok"));
+    }
+
+    @GetMapping("/stats/pitching/{playerId}")
+    public ResponseEntity<ResponseDto> getPlayerPitchingStat(@PathVariable Long playerId) {
+        PersonalPitchingStat pitchingStat = playerService.getPersonalPitchingStats(playerId);
+
+        return ResponseEntity
+                .ok()
+                .body(new ResponseDto(pitchingStat, "ok"));
     }
 
     @GetMapping("/playerList/{teamId}")

@@ -7,6 +7,8 @@ import me.bogeun.yajalal.payload.player.PlayerCreateDto;
 import me.bogeun.yajalal.payload.player.PlayerIdDto;
 import me.bogeun.yajalal.payload.player.PlayerInfoDto;
 import me.bogeun.yajalal.payload.player.PlayerUpdateDto;
+import me.bogeun.yajalal.payload.stat.PersonalBattingStat;
+import me.bogeun.yajalal.payload.stat.PersonalPitchingStat;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
 
 import java.util.List;
@@ -43,4 +45,7 @@ public interface PlayerService {
 
     List<PlayerIdDto> getPlayerAllByTeamId(Long teamId);
 
+    PersonalBattingStat getPersonalBattingStats(Long playerId);
+
+    PersonalPitchingStat getPersonalPitchingStats(Long playerId);
 }

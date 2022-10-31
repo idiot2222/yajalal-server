@@ -7,8 +7,8 @@ import me.bogeun.yajalal.entity.team.Team;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static me.bogeun.yajalal.entity.league.QTeam.team;
 import static me.bogeun.yajalal.entity.match.QMatch.match;
+import static me.bogeun.yajalal.entity.team.QTeam.team;
 
 
 public class TeamRepositoryImpl implements TeamDynamicRepository{
