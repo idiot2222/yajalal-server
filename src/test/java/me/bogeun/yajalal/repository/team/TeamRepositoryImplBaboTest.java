@@ -1,14 +1,12 @@
 package me.bogeun.yajalal.repository.team;
 
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.league.Team;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.repository.league.LeagueRepository;
 import me.bogeun.yajalal.service.TeamService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -2,11 +2,11 @@ package me.bogeun.yajalal.service;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
-import me.bogeun.yajalal.entity.team.Team;
-import me.bogeun.yajalal.entity.match.Match;
 import me.bogeun.yajalal.entity.match.Batting;
+import me.bogeun.yajalal.entity.match.Match;
 import me.bogeun.yajalal.entity.match.Pitching;
 import me.bogeun.yajalal.entity.player.Player;
+import me.bogeun.yajalal.entity.team.Team;
 import me.bogeun.yajalal.payload.match.BattingRecordDto;
 import me.bogeun.yajalal.payload.match.MatchResultDto;
 import me.bogeun.yajalal.payload.match.PitchingRecordDto;
@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+
+import static me.bogeun.yajalal.util.Calculator.*;
 
 @RequiredArgsConstructor
 @Service
@@ -95,36 +97,12 @@ public class MatchServiceImpl implements MatchService {
             batting.setBB(batting.getBB() + batter.getBb());
             batting.setSB(batting.getSB() + batter.getSb());
             batting.setCS(batting.getSB() + batter.getSb());
-            batting.setAVG(calAvg(batting.getH(), batting.getAB()));
-            batting.setOBP(calAvg(batting.getH()+batting.getBB(), batting.getPA()));
-            batting.setSLG(calSlg(batting.getH(), batting.getH2(), batting.getH3(), batting.getHR(), batting.getAB()));
+            batting.setAVG(calAVG(batting.getH(), batting.getAB()));
+            batting.setOBP(calOBP(batting.getH(), batting.getBB(), batting.getPA()));
+            batting.setSLG(calSLG(batting.getH(), batting.getH2(), batting.getH3(), batting.getHR(), batting.getAB()));
 
             battingService.saveBatting(batting);
         }
-    }
-
-    private String calSlg(Integer h, Integer h2, Integer h3, Integer hr, Integer ab) {
-        h -= h2;
-        h -= h3;
-        h -= hr;
-
-        if(h == 0 || ab == 0) {
-            return "0.000";
-        }
-
-        double v = (double) (h + h2*2 + h3*3 + hr*4) / ab;
-
-        return String.format("%.3f", v);
-    }
-
-    private String calAvg(Integer h, Integer ab) {
-        if(h == 0 || ab == 0) {
-            return "0.000";
-        }
-
-        double v = (double) h / ab;
-
-        return String.format("%.3f", v);
     }
 
     private void saveNewMatch(League league, Team myTeam, Team yourTeam, int rSum, int erSum, LocalDate matchDate) {
