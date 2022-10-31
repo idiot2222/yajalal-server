@@ -26,4 +26,14 @@ public class Calculator {
 
         return String.format("%.3f", d);
     }
+
+    public static String calSBP(int sb, int ts) {
+        return calAVG(sb, ts);
+    }
+
+    public static String calERA(int er, int ip) {
+        double v = (double) er * 27 / ip;
+
+        return String.format("%.3f", v);
+    }
 }

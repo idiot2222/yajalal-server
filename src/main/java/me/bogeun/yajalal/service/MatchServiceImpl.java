@@ -63,19 +63,13 @@ public class MatchServiceImpl implements MatchService {
             pitching.setER(pitching.getER() + pitcher.getEr());
             pitching.setK(pitching.getK() + pitcher.getK());
             pitching.setBB(pitching.getBB() + pitcher.getBb());
-            pitching.setERA(calEra(pitching.getIP(), pitching.getER()));
+            pitching.setERA(calERA(pitching.getIP(), pitching.getER()));
             pitching.setDecision(pitcher.getDecision());
 
             pitchingService.savePitching(pitching);
         }
     }
 
-
-    private String calEra(Integer ip, Integer er) {
-        double v = (double) er * 27 / ip;
-
-        return String.format("%.3f", v);
-    }
 
     private void saveBatterStats(List<BattingRecordDto> batters) {
         for (BattingRecordDto batter : batters) {
