@@ -1,5 +1,7 @@
 package me.bogeun.yajalal.entity.post;
 
+import me.bogeun.yajalal.entity.account.Account;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -25,5 +27,9 @@ public class Post {
     private PostType postType;
 
     private Long typeId;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
 }
