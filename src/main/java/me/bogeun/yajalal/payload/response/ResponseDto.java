@@ -19,4 +19,7 @@ public class ResponseDto {
         this.message = message;
     }
 
+    public ResponseDto(Object content) {
+        this.content = content;
+    }
 }

@@ -1,10 +1,12 @@
 package me.bogeun.yajalal.entity.post;
 
+import lombok.Setter;
 import me.bogeun.yajalal.entity.account.Account;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Setter
 @Entity
 public class Post {
 
