@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.payload.post.PostCreateDto;
 import me.bogeun.yajalal.payload.post.PostDto;
 import me.bogeun.yajalal.payload.post.PostRequestDto;
+import me.bogeun.yajalal.payload.post.PostUpdateDto;
 import me.bogeun.yajalal.payload.response.ResponseDto;
 import me.bogeun.yajalal.service.post.PostService;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,21 @@ public class PostController {
                 .body(new ResponseDto(postList));
     }
 
+    @PostMapping("/update/{postId}")
+    public ResponseEntity<ResponseDto> updatePost(@PathVariable Long postId,
+                                                  @RequestBody PostUpdateDto updateDto) {
+        postService.updatePost(postId, updateDto);
 
+        return ResponseEntity
+                .ok(new ResponseDto("ok"));
+    }
+
+    @PostMapping("/delete/{postId}")
+    public ResponseEntity<ResponseDto> deletePost(@PathVariable Long postId) {
+        postService.deletePost(postId);
+
+        return ResponseEntity
+                .ok(new ResponseDto("ok"));
+    }
 
 }

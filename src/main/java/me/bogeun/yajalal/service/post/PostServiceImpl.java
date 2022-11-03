@@ -6,6 +6,7 @@ import me.bogeun.yajalal.mapper.PostMapper;
 import me.bogeun.yajalal.payload.post.PostCreateDto;
 import me.bogeun.yajalal.payload.post.PostDto;
 import me.bogeun.yajalal.payload.post.PostRequestDto;
+import me.bogeun.yajalal.payload.post.PostUpdateDto;
 import me.bogeun.yajalal.repository.post.PostRepository;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +50,23 @@ public class PostServiceImpl implements PostService {
         return posts.stream()
                 .map(postMapper::entityToPostDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updatePost(Long postId, PostUpdateDto updateDto) {
+        Post post = getPost(postId);
+
+        post.setTitle(updateDto.getTitle());
+        post.setContent(updateDto.getContent());
+        post.setUpdatedTime(LocalDateTime.now());
+
+        postRepository.save(post);
+    }
+
+    @Override
+    public void deletePost(Long postId) {
+        Post post = getPost(postId);
+
+        postRepository.delete(post);
     }
 }
