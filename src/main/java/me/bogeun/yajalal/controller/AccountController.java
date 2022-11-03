@@ -7,7 +7,7 @@ import me.bogeun.yajalal.payload.account.AccountJoinDto;
 import me.bogeun.yajalal.payload.account.AccountUpdateDto;
 import me.bogeun.yajalal.payload.account.CurrentUserDto;
 import me.bogeun.yajalal.security.service.CurrentUser;
-import me.bogeun.yajalal.service.AccountService;
+import me.bogeun.yajalal.service.account.AccountService;
 import me.bogeun.yajalal.validator.AccountJoinValidator;
 import me.bogeun.yajalal.validator.AccountUpdateValidator;
 import org.springframework.http.ResponseEntity;

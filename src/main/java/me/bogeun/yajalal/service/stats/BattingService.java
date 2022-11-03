@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.stats;
 
 import me.bogeun.yajalal.entity.match.Batting;
 import me.bogeun.yajalal.entity.player.Player;

@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.team;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;

@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.player;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.account.Account;
@@ -17,6 +17,10 @@ import me.bogeun.yajalal.payload.stat.PersonalPitchingStat;
 import me.bogeun.yajalal.payload.stat.PlayerStat;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
+import me.bogeun.yajalal.service.account.AccountService;
+import me.bogeun.yajalal.service.stats.BattingService;
+import me.bogeun.yajalal.service.stats.PitchingService;
+import me.bogeun.yajalal.service.team.TeamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

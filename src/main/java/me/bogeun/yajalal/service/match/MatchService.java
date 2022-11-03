@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.match;
 
 import me.bogeun.yajalal.payload.match.MatchResultDto;
 

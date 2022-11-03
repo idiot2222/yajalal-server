@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.league;
 
 import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.entity.team.Team;

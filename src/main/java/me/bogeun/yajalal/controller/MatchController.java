@@ -3,7 +3,7 @@ package me.bogeun.yajalal.controller;
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.payload.match.MatchResultDto;
 import me.bogeun.yajalal.payload.response.ResponseDto;
-import me.bogeun.yajalal.service.MatchService;
+import me.bogeun.yajalal.service.match.MatchService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

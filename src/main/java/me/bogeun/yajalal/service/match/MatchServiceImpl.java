@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.match;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
@@ -11,6 +11,11 @@ import me.bogeun.yajalal.payload.match.BattingRecordDto;
 import me.bogeun.yajalal.payload.match.MatchResultDto;
 import me.bogeun.yajalal.payload.match.PitchingRecordDto;
 import me.bogeun.yajalal.repository.match.MatchRepository;
+import me.bogeun.yajalal.service.league.LeagueService;
+import me.bogeun.yajalal.service.player.PlayerService;
+import me.bogeun.yajalal.service.stats.BattingService;
+import me.bogeun.yajalal.service.stats.PitchingService;
+import me.bogeun.yajalal.service.team.TeamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

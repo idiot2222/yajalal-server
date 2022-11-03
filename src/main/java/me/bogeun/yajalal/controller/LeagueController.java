@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
 import me.bogeun.yajalal.payload.league.LeagueDashboard;
 import me.bogeun.yajalal.payload.league.LeagueDto;
-import me.bogeun.yajalal.service.LeagueService;
-import me.bogeun.yajalal.service.PlayerService;
+import me.bogeun.yajalal.service.league.LeagueService;
+import me.bogeun.yajalal.service.player.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

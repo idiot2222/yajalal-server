@@ -13,7 +13,7 @@ import me.bogeun.yajalal.payload.stat.PersonalBattingStat;
 import me.bogeun.yajalal.payload.stat.PersonalPitchingStat;
 import me.bogeun.yajalal.payload.stat.StatRequestDto;
 import me.bogeun.yajalal.payload.stat.StatResponseDto;
-import me.bogeun.yajalal.service.PlayerService;
+import me.bogeun.yajalal.service.player.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;

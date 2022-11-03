@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.league;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.league.League;
@@ -11,6 +11,7 @@ import me.bogeun.yajalal.payload.league.LeagueDto;
 import me.bogeun.yajalal.payload.team.TeamRecordDto;
 import me.bogeun.yajalal.repository.league.LeagueRepository;
 import me.bogeun.yajalal.repository.team.TeamRepository;
+import me.bogeun.yajalal.service.team.TeamService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.account;
 
 import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.payload.account.AccountInfoDto;

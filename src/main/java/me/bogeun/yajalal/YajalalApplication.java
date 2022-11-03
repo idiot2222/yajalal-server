@@ -1,14 +1,13 @@
 package me.bogeun.yajalal;
 
 import lombok.RequiredArgsConstructor;
-import me.bogeun.yajalal.payload.league.LeagueDto;
 import me.bogeun.yajalal.repository.player.BattingRepository;
 import me.bogeun.yajalal.repository.player.PitchingRepository;
 import me.bogeun.yajalal.repository.player.PlayerRepository;
-import me.bogeun.yajalal.service.AccountService;
-import me.bogeun.yajalal.service.LeagueService;
-import me.bogeun.yajalal.service.PlayerService;
-import me.bogeun.yajalal.service.TeamService;
+import me.bogeun.yajalal.service.account.AccountService;
+import me.bogeun.yajalal.service.league.LeagueService;
+import me.bogeun.yajalal.service.player.PlayerService;
+import me.bogeun.yajalal.service.team.TeamService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;

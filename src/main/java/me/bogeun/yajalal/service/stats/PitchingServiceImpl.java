@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.stats;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.match.Pitching;

@@ -1,4 +1,4 @@
-package me.bogeun.yajalal.service;
+package me.bogeun.yajalal.service.account;
 
 import lombok.RequiredArgsConstructor;
 import me.bogeun.yajalal.entity.account.Account;
