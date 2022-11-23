@@ -138,7 +138,14 @@ public class PlayerController {
 
     @GetMapping("/playerId/{userId}")
     public ResponseEntity<Long> getPlayerId(@PathVariable Long userId) {
-        Player player = playerService.getPlayerByUserId(userId);
+        Player player;
+        try {
+             player = playerService.getPlayerByUserId(userId);
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(403)
+                    .body(-1L);
+        }
 
         return ResponseEntity
                 .ok(player.getId());
