@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface PostDynamicRepository {
 
-    List<Post> getRecentPostListByType(PostType postType, Long typeId, Integer limit);
+    List<Post> getRecentPostListByType(PostType postType, Long typeId, int limit, int page);
 
+    Integer getPostCount(PostType postType, Long typeId);
 }

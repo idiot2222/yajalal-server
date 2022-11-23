@@ -1,6 +1,7 @@
 package me.bogeun.yajalal.service.post;
 
 import lombok.RequiredArgsConstructor;
+import me.bogeun.yajalal.entity.account.Account;
 import me.bogeun.yajalal.entity.post.Post;
 import me.bogeun.yajalal.mapper.PostMapper;
 import me.bogeun.yajalal.payload.post.PostCreateDto;
@@ -8,6 +9,7 @@ import me.bogeun.yajalal.payload.post.PostDto;
 import me.bogeun.yajalal.payload.post.PostRequestDto;
 import me.bogeun.yajalal.payload.post.PostUpdateDto;
 import me.bogeun.yajalal.repository.post.PostRepository;
+import me.bogeun.yajalal.service.account.AccountService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
+    private final AccountService accountService;
 
     private final PostMapper postMapper;
 
@@ -26,7 +29,10 @@ public class PostServiceImpl implements PostService {
     public void createPost(PostCreateDto createDto) {
         Post post = postMapper.createDtoToEntity(createDto);
 
+        Account account = accountService.getAccountById(createDto.getAccountId());
+
         post.setCreatedTime(LocalDateTime.now());
+        post.setAccount(account);
 
         postRepository.save(post);
     }
@@ -44,11 +50,15 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> getRecentPostList(PostRequestDto requestDto, Integer limit) {
-        List<Post> posts = postRepository.getRecentPostListByType(requestDto.getPostType(), requestDto.getTypeId(), limit);
+    public List<PostDto> getRecentPostList(PostRequestDto requestDto, int limit, int page) {
+        List<Post> posts = postRepository.getRecentPostListByType(requestDto.getPostType(), requestDto.getTypeId(), limit, page);
 
         return posts.stream()
-                .map(postMapper::entityToPostDto)
+                .map(x -> {
+                    PostDto postDto = postMapper.entityToPostDto(x);
+                    postDto.setWriterName(x.getAccount().getNickname());
+                    return postDto;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -68,5 +78,10 @@ public class PostServiceImpl implements PostService {
         Post post = getPost(postId);
 
         postRepository.delete(post);
+    }
+
+    @Override
+    public Integer getPostCount(PostRequestDto requestDto) {
+        return postRepository.getPostCount(requestDto.getPostType(), requestDto.getTypeId());
     }
 }

@@ -15,9 +15,11 @@ public interface PostService {
 
     PostDto getPostDto(Long postId);
 
-    List<PostDto> getRecentPostList(PostRequestDto requestDto, Integer limit);
+    List<PostDto> getRecentPostList(PostRequestDto requestDto, int limit, int page);
 
     void updatePost(Long postId, PostUpdateDto updateDto);
 
     void deletePost(Long postId);
+
+    Integer getPostCount(PostRequestDto requestDto);
 }

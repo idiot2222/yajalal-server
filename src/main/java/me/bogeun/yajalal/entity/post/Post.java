@@ -1,5 +1,6 @@
 package me.bogeun.yajalal.entity.post;
 
+import lombok.Getter;
 import lombok.Setter;
 import me.bogeun.yajalal.entity.account.Account;
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Setter
+@Getter
 @Entity
 public class Post {
 
@@ -20,7 +22,7 @@ public class Post {
     @Column(length = 500)
     private String content;
 
-    @Column(insertable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdTime;
 
     private LocalDateTime updatedTime;
@@ -30,7 +32,7 @@ public class Post {
 
     private Long typeId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     private Account account;
 

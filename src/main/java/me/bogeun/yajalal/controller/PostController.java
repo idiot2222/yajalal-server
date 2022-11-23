@@ -38,14 +38,24 @@ public class PostController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<ResponseDto> getPosts(@RequestParam Integer limit,
+    public ResponseEntity<ResponseDto> getPosts(@RequestParam int page,
+                                                @RequestParam int limit,
                                                 PostRequestDto requestDto) {
 
-        List<PostDto> postList = postService.getRecentPostList(requestDto, limit);
+        List<PostDto> postList = postService.getRecentPostList(requestDto, limit, page);
 
         return ResponseEntity
                 .ok()
                 .body(new ResponseDto(postList));
+    }
+
+    @GetMapping("/list/count")
+    public ResponseEntity<ResponseDto> getPostCount(PostRequestDto requestDto) {
+        Integer count = postService.getPostCount(requestDto);
+
+        return ResponseEntity
+                .ok()
+                .body(new ResponseDto(count));
     }
 
     @PostMapping("/update/{postId}")
